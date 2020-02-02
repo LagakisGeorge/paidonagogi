@@ -196,7 +196,7 @@ Public Class Form1
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
-        ExecuteSQLQuery("SELECT * FROM PEL WHERE EIDOS='e' and EPO LIKE '%" + TextBox1.Text + "%'")
+        ExecuteSQLQuery("SELECT * FROM PEL WHERE EIDOS='e' and EPO LIKE '" + TextBox1.Text + "%'")
         If sqlDT.Rows.Count > 0 Then
             EGGRAFESN.Text = Str(sqlDT.Rows.Count)
             EPO.Text = sqlDT.Rows(0)("EPO")
@@ -266,13 +266,6 @@ Public Class Form1
         ' ,<ENERGH, int,>)
     End Sub
 
-    Private Sub Label10_Click(sender As Object, e As EventArgs) Handles Label10.Click
-
-    End Sub
-
-    Private Sub TextBox4_TextChanged(sender As Object, e As EventArgs) Handles TITLOSNOSIMATOS.TextChanged
-
-    End Sub
 
     Private Sub SAVEDIAGN_Click(sender As Object, e As EventArgs) Handles SAVEDIAGN.Click
         upd_Cfield("KATHGORIA", KATHGORIA)
@@ -298,4 +291,39 @@ Public Class Form1
         ExecuteSQLQuery("UPDATE GNOMATEYSI SET " + f + "=" + v.Text + " where ID=" + F_CIdDiagn)
     End Sub
 
+    Private Sub TableLayoutPanel1_Paint(sender As Object, e As PaintEventArgs) Handles TableLayoutPanel1.Paint
+
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Button2.Enabled = False
+        ExecuteSQLQuery(" Select * from GNOMATEYSI WHERE ENERGH=1 AND IDPEL=" + F_CIdDiagn)
+        If sqlDT.Rows.Count > 0 Then
+            KATHGORIA.Text = sqlDT.Rows(0)("KATHGORIA").ToString
+            TITLOSNOSIMATOS.Text = sqlDT.Rows(0)("TITLOSNOSIMATOS").ToString
+            ' ,<KODNOSIMATOS, nvarchar(10),>
+            ' ,<TITLOSNOSIMATOS, nvarchar(50),>
+            ' ,<EIDIK1, nvarchar(50),>
+            ' ,<EIDIK2, nvarchar(50),>
+            ' ,<EIDIK3, nvarchar(50),>
+            ' ,<EIDIK4, nvarchar(50),>
+            ' ,<LOGH, int,>
+            ' ,<ERGH, int,>
+            ' ,<PSIH, int,>
+            ' ,<FYSH, int,>
+            ' ,<EIDH, int,>
+            ' ,<OIKH, int,>
+
+
+
+
+
+        End If
+
+
+
+
+
+
+    End Sub
 End Class

@@ -37,7 +37,6 @@ Partial Class Form1
         Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.EGGRAFESN = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
@@ -83,6 +82,8 @@ Partial Class Form1
         Me.TextBox20 = New System.Windows.Forms.TextBox()
         Me.KATHGORIA = New System.Windows.Forms.TextBox()
         Me.SAVEDIAGN = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -119,9 +120,10 @@ Partial Class Form1
         Me.TableLayoutPanel1.Controls.Add(Me.Label6, 1, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.TextBox5, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.Button1, 0, 3)
-        Me.TableLayoutPanel1.Controls.Add(Me.Button2, 1, 3)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label7, 0, 2)
-        Me.TableLayoutPanel1.Controls.Add(Me.EGGRAFESN, 3, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.Button3, 0, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.Button2, 3, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.EGGRAFESN, 2, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.Button4, 1, 3)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 4
@@ -250,30 +252,20 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button2.Location = New System.Drawing.Point(193, 121)
+        Me.Button2.Location = New System.Drawing.Point(585, 121)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(314, 28)
+        Me.Button2.Size = New System.Drawing.Size(224, 28)
         Me.Button2.TabIndex = 12
         Me.Button2.Text = "ΕΠΟΜΕΝΟ =>"
         Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(3, 72)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(39, 13)
-        Me.Label7.TabIndex = 13
-        Me.Label7.Text = "Label7"
         '
         'EGGRAFESN
         '
         Me.EGGRAFESN.AutoSize = True
         Me.EGGRAFESN.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.EGGRAFESN.Location = New System.Drawing.Point(585, 139)
+        Me.EGGRAFESN.Location = New System.Drawing.Point(513, 139)
         Me.EGGRAFESN.Name = "EGGRAFESN"
-        Me.EGGRAFESN.Size = New System.Drawing.Size(224, 13)
+        Me.EGGRAFESN.Size = New System.Drawing.Size(66, 13)
         Me.EGGRAFESN.TabIndex = 15
         Me.EGGRAFESN.Text = ".."
         Me.EGGRAFESN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -750,6 +742,27 @@ Partial Class Form1
         Me.SAVEDIAGN.Text = "Καταχώρηση"
         Me.SAVEDIAGN.UseVisualStyleBackColor = True
         '
+        'Button3
+        '
+        Me.Button3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
+        Me.Button3.Location = New System.Drawing.Point(3, 75)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(184, 40)
+        Me.Button3.TabIndex = 16
+        Me.Button3.Text = "Διόρθωση"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Button4.Location = New System.Drawing.Point(193, 126)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(314, 23)
+        Me.Button4.TabIndex = 17
+        Me.Button4.Text = "Επιλογή Μαθητή"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -796,7 +809,6 @@ Partial Class Form1
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
-    Friend WithEvents Label7 As Label
     Friend WithEvents EGGRAFESN As Label
     Friend WithEvents Label14 As Label
     Friend WithEvents Label13 As Label
@@ -834,4 +846,6 @@ Partial Class Form1
     Friend WithEvents KATHGORIA As TextBox
     Friend WithEvents TextBox20 As TextBox
     Friend WithEvents SAVEDIAGN As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Button4 As Button
 End Class
