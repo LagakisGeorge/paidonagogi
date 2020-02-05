@@ -24,21 +24,22 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.kod = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.EPO = New System.Windows.Forms.TextBox()
         Me.ONOMA = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.NEADIAGNOSI = New System.Windows.Forms.Button()
-        Me.EGGRAFESN = New System.Windows.Forms.Label()
         Me.EPILOGH = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.EGGRAFESN = New System.Windows.Forms.Label()
         Me.BNext = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.Label14 = New System.Windows.Forms.Label()
@@ -83,12 +84,14 @@ Partial Class Form1
         Me.TableLayoutPanel5 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
+        Me.TableLayoutPanel3.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -108,7 +111,7 @@ Partial Class Form1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.69531!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 236.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 237.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.Label1, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Label2, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.kod, 4, 0)
@@ -135,17 +138,6 @@ Partial Class Form1
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(812, 152)
         Me.TableLayoutPanel1.TabIndex = 0
         '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.TableLayoutPanel1.SetColumnSpan(Me.Label5, 2)
-        Me.Label5.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Label5.Location = New System.Drawing.Point(486, 59)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(86, 13)
-        Me.Label5.TabIndex = 8
-        Me.Label5.Text = "ΕΠΩΝΥΜΟ"
-        '
         'Label1
         '
         Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Top
@@ -171,48 +163,26 @@ Partial Class Form1
         'kod
         '
         Me.kod.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.kod.Location = New System.Drawing.Point(578, 15)
+        Me.kod.Location = New System.Drawing.Point(577, 15)
         Me.kod.Name = "kod"
-        Me.kod.Size = New System.Drawing.Size(231, 20)
+        Me.kod.Size = New System.Drawing.Size(232, 20)
         Me.kod.TabIndex = 3
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.TableLayoutPanel1.SetColumnSpan(Me.Label3, 2)
-        Me.Label3.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Label3.Location = New System.Drawing.Point(486, 25)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(86, 13)
-        Me.Label3.TabIndex = 6
-        Me.Label3.Text = "A/A"
         '
         'EPO
         '
         Me.EPO.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.EPO.Location = New System.Drawing.Point(578, 49)
+        Me.EPO.Location = New System.Drawing.Point(577, 49)
         Me.EPO.Name = "EPO"
-        Me.EPO.Size = New System.Drawing.Size(231, 20)
+        Me.EPO.Size = New System.Drawing.Size(232, 20)
         Me.EPO.TabIndex = 4
         '
         'ONOMA
         '
         Me.ONOMA.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ONOMA.Location = New System.Drawing.Point(578, 95)
+        Me.ONOMA.Location = New System.Drawing.Point(577, 95)
         Me.ONOMA.Name = "ONOMA"
-        Me.ONOMA.Size = New System.Drawing.Size(231, 20)
+        Me.ONOMA.Size = New System.Drawing.Size(232, 20)
         Me.ONOMA.TabIndex = 2
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.TableLayoutPanel1.SetColumnSpan(Me.Label4, 2)
-        Me.Label4.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Label4.Location = New System.Drawing.Point(486, 105)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(86, 13)
-        Me.Label4.TabIndex = 7
-        Me.Label4.Text = "ΟΝΟΜΑ"
         '
         'TextBox1
         '
@@ -220,7 +190,7 @@ Partial Class Form1
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
         Me.TextBox1.Location = New System.Drawing.Point(183, 93)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(297, 22)
+        Me.TextBox1.Size = New System.Drawing.Size(296, 22)
         Me.TextBox1.TabIndex = 1
         '
         'Label6
@@ -229,7 +199,7 @@ Partial Class Form1
         Me.Label6.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Label6.Location = New System.Drawing.Point(183, 59)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(297, 13)
+        Me.Label6.Size = New System.Drawing.Size(296, 13)
         Me.Label6.TabIndex = 9
         Me.Label6.Text = "ΕΠΩΝΥΜΟ ή ΤΗΛΕΦΩΝΟ"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -255,36 +225,79 @@ Partial Class Form1
         Me.NEADIAGNOSI.UseVisualStyleBackColor = True
         Me.NEADIAGNOSI.Visible = False
         '
-        'EGGRAFESN
-        '
-        Me.EGGRAFESN.AutoSize = True
-        Me.EGGRAFESN.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.EGGRAFESN.Location = New System.Drawing.Point(578, 139)
-        Me.EGGRAFESN.Name = "EGGRAFESN"
-        Me.EGGRAFESN.Size = New System.Drawing.Size(231, 13)
-        Me.EGGRAFESN.TabIndex = 15
-        Me.EGGRAFESN.Text = ".."
-        Me.EGGRAFESN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
         'EPILOGH
         '
         Me.EPILOGH.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.EPILOGH.Location = New System.Drawing.Point(183, 121)
         Me.EPILOGH.Name = "EPILOGH"
-        Me.EPILOGH.Size = New System.Drawing.Size(297, 28)
+        Me.EPILOGH.Size = New System.Drawing.Size(296, 28)
         Me.EPILOGH.TabIndex = 17
         Me.EPILOGH.Text = "Επιλογή Μαθητή"
         Me.EPILOGH.UseVisualStyleBackColor = True
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.TableLayoutPanel1.SetColumnSpan(Me.Label4, 2)
+        Me.Label4.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Label4.Location = New System.Drawing.Point(485, 105)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(86, 13)
+        Me.Label4.TabIndex = 7
+        Me.Label4.Text = "ΟΝΟΜΑ"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.TableLayoutPanel1.SetColumnSpan(Me.Label5, 2)
+        Me.Label5.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Label5.Location = New System.Drawing.Point(485, 59)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(86, 13)
+        Me.Label5.TabIndex = 8
+        Me.Label5.Text = "ΕΠΩΝΥΜΟ"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.TableLayoutPanel1.SetColumnSpan(Me.Label3, 2)
+        Me.Label3.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Label3.Location = New System.Drawing.Point(485, 25)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(86, 13)
+        Me.Label3.TabIndex = 6
+        Me.Label3.Text = "A/A"
+        '
+        'EGGRAFESN
+        '
+        Me.EGGRAFESN.AutoSize = True
+        Me.EGGRAFESN.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.EGGRAFESN.Location = New System.Drawing.Point(577, 139)
+        Me.EGGRAFESN.Name = "EGGRAFESN"
+        Me.EGGRAFESN.Size = New System.Drawing.Size(232, 13)
+        Me.EGGRAFESN.TabIndex = 15
+        Me.EGGRAFESN.Text = ".."
+        Me.EGGRAFESN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'BNext
         '
         Me.BNext.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.BNext.Location = New System.Drawing.Point(532, 121)
+        Me.BNext.Location = New System.Drawing.Point(531, 121)
         Me.BNext.Name = "BNext"
         Me.BNext.Size = New System.Drawing.Size(40, 28)
         Me.BNext.TabIndex = 12
         Me.BNext.Text = "=>"
         Me.BNext.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Button1.Location = New System.Drawing.Point(485, 121)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(40, 28)
+        Me.Button1.TabIndex = 18
+        Me.Button1.Text = "<="
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Panel2
         '
@@ -701,6 +714,8 @@ Partial Class Form1
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 183.0!))
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234.0!))
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231.0!))
+        Me.TableLayoutPanel3.Controls.Add(Me.Button2, 1, 4)
+        Me.TableLayoutPanel3.Controls.Add(Me.DateTimePicker1, 2, 2)
         Me.TableLayoutPanel3.Location = New System.Drawing.Point(3, 0)
         Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
         Me.TableLayoutPanel3.RowCount = 5
@@ -759,15 +774,21 @@ Partial Class Form1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'Button1
+        'Button2
         '
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button1.Location = New System.Drawing.Point(486, 121)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(40, 28)
-        Me.Button1.TabIndex = 18
-        Me.Button1.Text = "<="
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button2.Location = New System.Drawing.Point(186, 119)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(76, 28)
+        Me.Button2.TabIndex = 0
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Location = New System.Drawing.Point(420, 57)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePicker1.TabIndex = 1
         '
         'Form1
         '
@@ -787,6 +808,7 @@ Partial Class Form1
         Me.TableLayoutPanel2.ResumeLayout(False)
         Me.TableLayoutPanel2.PerformLayout()
         Me.Panel3.ResumeLayout(False)
+        Me.TableLayoutPanel3.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -854,4 +876,6 @@ Partial Class Form1
     Friend WithEvents SAVEDIAGN As Button
     Friend WithEvents EPILOGH As Button
     Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
+    Friend WithEvents DateTimePicker1 As DateTimePicker
 End Class
