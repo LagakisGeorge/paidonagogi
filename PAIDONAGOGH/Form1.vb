@@ -15,8 +15,8 @@ Public Class Form1
     Dim F_CIdDiagn As String ' id gnomateysi 
     Dim F_cIdPel As String ' id pel που εχω διαλεξει
 
-    Dim gSQLCon As String
-    Dim GCONNECT As String
+    Public gSQLCon As String
+    ' Public GCONNECT As String
     Private sqlDT As DataTable
 
 
@@ -436,5 +436,10 @@ Public Class Form1
 
         End If
         SHOW_GNOMATEYSI()
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Form2.Show()
+
     End Sub
 End Class
