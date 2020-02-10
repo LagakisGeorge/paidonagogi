@@ -15,6 +15,17 @@ Public Class Form1
     Dim F_CIdDiagn As String ' id gnomateysi 
     Dim F_cIdPel As String ' id pel που εχω διαλεξει
 
+
+    'create data adapter
+    Dim da As OleDbDataAdapter ' SqlDataAdapter
+
+    'create dataset
+    Dim ds As DataSet = New DataSet
+
+
+
+
+
     Public gSQLCon As String
     ' Public GCONNECT As String
     Private sqlDT As DataTable
@@ -227,6 +238,12 @@ Public Class Form1
 
         checkServer(0)
 
+        Dim sqldt3 As New DataTable
+        ExecuteSQLQuery("select * from THERAP", sqldt3)
+        For K As Integer = 0 To sqldt3.Rows.Count - 1
+            ComboTher.Items.Add(sqldt3.Rows(K)("EPO") + Space(50) + ";" + Str(sqldt3.Rows(K)("ID").ToString))
+        Next
+
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles BNext.Click
@@ -322,6 +339,8 @@ Public Class Form1
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles EPILOGH.Click
         BNext.Enabled = False
+        bPrev.Enabled = False
+
 
         '  DIORTOSI.Visible = True
 
@@ -331,6 +350,18 @@ Public Class Form1
         Else
             SAVEDIAGN.Enabled = True
         End If
+
+        If F_CIdDiagn = Nothing Or Val(F_CIdDiagn) = 0 Then
+            F_CIdDiagn = "0"
+        End If
+        PAINT_GRID()
+
+        PAINT_GRID_PERIOD()
+
+
+
+
+
     End Sub
     Function SHOW_GNOMATEYSI() As Integer
         Dim ADEIO As Integer
@@ -355,19 +386,6 @@ Public Class Form1
             EIDH.Text = sqlDT.Rows(0)("EIDH").ToString
             OIKH.Text = sqlDT.Rows(0)("OIKH").ToString
             FYSH.Text = sqlDT.Rows(0)("FYSH").ToString
-            'SAVEDIAGN.Enabled = True
-            ' ,<KODNOSIMATOS, nvarchar(10),>
-            ' ,<TITLOSNOSIMATOS, nvarchar(50),>
-            ' ,<EIDIK1, nvarchar(50),>
-            ' ,<EIDIK2, nvarchar(50),>
-            ' ,<EIDIK3, nvarchar(50),>
-            ' ,<EIDIK4, nvarchar(50),>
-            ' ,<LOGH, int,>
-            ' ,<ERGH, int,>
-            ' ,<PSIH, int,>
-            ' ,<FYSH, int,>
-            ' ,<EIDH, int,>
-            ' ,<OIKH, int,>
 
 
         Else
@@ -407,22 +425,7 @@ Public Class Form1
 
     End Function
 
-    'Private Sub BindingNavigatorMoveNextItem_Click(sender As Object, e As EventArgs)
-    '    f_sqlDT = f_sqlDT + 1
-    '    If f_sqlDT < SQLpELATES.Rows.Count Then
-
-    '        EPO.Text = SQLpELATES.Rows(f_sqlDT)("EPO")
-    '        kod.Text = SQLpELATES.Rows(f_sqlDT)("kod")
-    '        F_cIdPel = SQLpELATES.Rows(f_sqlDT)("ID")  'f_sqlDT = 0
-    '        EGGRAFESN.Text = F_cIdPel
-
-
-    '    End If
-    '    SHOW_GNOMATEYSI()
-    'End Sub
-
-
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles bPrev.Click
         f_sqlDT = f_sqlDT - 1
         If f_sqlDT >= 0 Then 'SQLpELATES.Rows.Count Then
 
@@ -440,6 +443,182 @@ Public Class Form1
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Form2.Show()
+
+    End Sub
+    Private Sub PAINT_GRID()
+        Dim STHLHTOY_ID As Int16 = 1
+        'cnString = gConnect ' "Data Source=localhost\SQLEXPRESS;Integrated Security=True;database=thermo"
+        'Str_Connection = cnString
+        Dim SQLqry
+        SQLqry = "SELECT TOP 100 ID,IDGN,IDTH,HME,ORES FROM SYNEDRIES WHERE IDGN= " + F_CIdDiagn  ' ORDER BY HME "
+        'conn = New SqlConnection(cnString)
+
+        Dim conn As New OleDbConnection
+        conn.ConnectionString = gConnect
+        conn.Open()
+
+
+
+        Try
+            ' Open connection
+            'conn.Open()
+
+            da = New OleDbDataAdapter(SQLqry, conn)
+
+            'create command builder
+            Dim cb As OleDbCommandBuilder = New OleDbCommandBuilder(da)
+            ds.Clear()
+            'fill dataset
+            da.Fill(ds, "PEL")
+            GridView1.ClearSelection()
+            GridView1.DataSource = ds
+            GridView1.DataMember = "PEL"
+
+            'GridView1.Columns(STHLHTOY_ID).Width = 0
+            GridView1.Columns(STHLHTOY_ID).Visible = False
+
+        Catch ex As SqlException
+            MsgBox(ex.ToString)
+        Finally
+            ' Close connection
+            conn.Close()
+        End Try
+
+    End Sub
+    Private Sub SaveSynedr_Click(sender As Object, e As EventArgs) Handles saveSynedr.Click
+        Dim cIDTH As String = Split(ComboTher.Text, ";")(1)
+        Dim cDGN = F_CIdDiagn
+        ExecuteSQLQuery("insert into SYNEDRIES (IDTH,IDGN,ORES,HME) VALUES (" + cIDTH + "," + cDGN + ",1,'" + Format(DateTimePicker1.Value, "MM/dd/yyyy HH:mm") + "')")
+        '    INSERT INTO [dbo].[SYNEDRIES]
+        '   ([ IDGN]
+        '   ,[IDTH]
+        '   ,[HME]
+        '   ,[ORES]
+        '   ,[N1]
+        '   ,[C1]
+        '   ,[N2]
+        '   ,[C2])
+        ''        (<IDGN, int,>   F_CIdDiagn
+        ',<IDTH, int,>   combo-split(1)
+        ',<HME, datetime,>
+        ',<ORES, real,>
+        ',<N1, real,>
+        ',<C1, nvarchar(50),>
+        ',<N2, real,>
+        ',<C2, nvarchar(50),>)
+
+        PAINT_GRID()
+
+
+
+
+
+
+
+    End Sub
+
+    Private Sub PAINT_GRID_PERIOD()
+        'create data adapter
+        Dim da As OleDbDataAdapter ' SqlDataAdapter
+
+        'create dataset
+        Dim ds As DataSet = New DataSet
+
+
+
+        Dim STHLHTOY_ID As Int16 = 1
+        'cnString = gConnect ' "Data Source=localhost\SQLEXPRESS;Integrated Security=True;database=thermo"
+        'Str_Connection = cnString
+        Dim SQLqry
+        SQLqry = "SELECT TOP 100 ID,IDGN,APO,EOS FROM PERIODOI WHERE IDGN= " + F_CIdDiagn  ' ORDER BY HME "
+        'conn = New SqlConnection(cnString)
+
+        Dim conn As New OleDbConnection
+        conn.ConnectionString = gConnect
+        conn.Open()
+
+
+
+        Try
+            ' Open connection
+            'conn.Open()
+
+            da = New OleDbDataAdapter(SQLqry, conn)
+
+            'create command builder
+            Dim cb As OleDbCommandBuilder = New OleDbCommandBuilder(da)
+            ds.Clear()
+            'fill dataset
+            da.Fill(ds, "PEL")
+            GridView2.ClearSelection()
+            GridView2.DataSource = ds
+            GridView2.DataMember = "PEL"
+
+            'GridView1.Columns(STHLHTOY_ID).Width = 0
+            GridView2.Columns(STHLHTOY_ID).Visible = False
+
+        Catch ex As SqlException
+            MsgBox(ex.ToString)
+        Finally
+            ' Close connection
+            conn.Close()
+        End Try
+
+    End Sub
+    Private Sub BAkyr_Click(sender As Object, e As EventArgs) Handles bAkyr.Click
+        BNext.Enabled = True
+        bPrev.Enabled = True
+        F_CIdDiagn = Nothing
+
+    End Sub
+
+    Private Sub bDeleSynedr_Click(sender As Object, e As EventArgs) Handles bDeleSynedr.Click
+        ' ο κωδικος του προιοντος που διαλεξα
+        Dim mk As String = GridView1.CurrentRow.Cells(0).Value.ToString
+        Dim FOFO As New DataTable
+        ExecuteSQLQuery("DELETE FROM SYNEDRIES WHERE ID=" + mk, FOFO)
+        MsgBox("ΔΙΕΓΡΑΦΗ")
+        PAINT_GRID()
+
+
+    End Sub
+
+    Private Sub SavePeriodos_Click(sender As Object, e As EventArgs) Handles SavePeriodos.Click
+        '  Dim cIDTH As String = Split(ComboTher.Text, ";")(1)
+        Dim cDGN = F_CIdDiagn
+        ExecuteSQLQuery("insert into PERIODOI (IDGN,APO,EOS) VALUES (" + cDGN + ",'" + Format(APO.Value, "MM/dd/yyyy") + "','" + Format(EOS.Value, "MM/dd/yyyy") + "')")
+        PAINT_GRID_PERIOD()
+
+
+
+
+
+        '        USE [MERCURY]
+        'GO
+
+        '/****** Object  Table [dbo].[PERIODOI]    Script Date:  9/2/2020 10:58:19 πμ ******/
+        'SET ANSI_NULLS ON
+        'GO
+
+        'SET QUOTED_IDENTIFIER ON
+        'GO
+
+        '        CREATE TABLE [dbo].[PERIODOI](
+        '    [ID] [Int] Not NULL,
+        '    [IDGN] [Int] NULL,
+        '    [APO] [DateTime] NULL,
+        '    [EOS] [DateTime] NULL,
+        '    [N1] [real] NULL,
+        '    [N2] [real] NULL,
+        '    [C1] [nvarchar](50) NULL,
+        '    [C2] [nvarchar](50) NULL,
+        ' Constraint [PK_PERIODOI] PRIMARY KEY CLUSTERED 
+        '(
+        '	[ID] Asc
+        ')WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+        ') ON [PRIMARY]
+        'GO
+
 
     End Sub
 End Class

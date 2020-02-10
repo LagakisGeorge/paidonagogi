@@ -39,7 +39,8 @@ Partial Class Form1
         Me.Label3 = New System.Windows.Forms.Label()
         Me.EGGRAFESN = New System.Windows.Forms.Label()
         Me.BNext = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.bPrev = New System.Windows.Forms.Button()
+        Me.bAkyr = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.Label14 = New System.Windows.Forms.Label()
@@ -80,15 +81,23 @@ Partial Class Form1
         Me.SAVEDIAGN = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.saveSynedr = New System.Windows.Forms.Button()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.ComboTher = New System.Windows.Forms.ComboBox()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.EOS = New System.Windows.Forms.DateTimePicker()
+        Me.APO = New System.Windows.Forms.DateTimePicker()
+        Me.SavePeriodos = New System.Windows.Forms.Button()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.GridView2 = New System.Windows.Forms.DataGridView()
+        Me.bDeleSynedr = New System.Windows.Forms.Button()
+        Me.GridView1 = New System.Windows.Forms.DataGridView()
         Me.TableLayoutPanel5 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel4 = New System.Windows.Forms.TableLayoutPanel()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
@@ -99,6 +108,8 @@ Partial Class Form1
         Me.Panel3.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         Me.Panel4.SuspendLayout()
+        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -117,7 +128,7 @@ Partial Class Form1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.69531!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 240.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.Label1, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Label2, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.kod, 4, 0)
@@ -133,7 +144,8 @@ Partial Class Form1
         Me.TableLayoutPanel1.Controls.Add(Me.Label3, 2, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.EGGRAFESN, 4, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.BNext, 3, 3)
-        Me.TableLayoutPanel1.Controls.Add(Me.Button1, 2, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.bPrev, 2, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.bAkyr, 0, 2)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 4
@@ -149,7 +161,7 @@ Partial Class Form1
         Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.Label1.Location = New System.Drawing.Point(256, 0)
+        Me.Label1.Location = New System.Drawing.Point(249, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(146, 20)
         Me.Label1.TabIndex = 0
@@ -161,7 +173,7 @@ Partial Class Form1
         Me.Label2.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Label2.Location = New System.Drawing.Point(3, 25)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(173, 13)
+        Me.Label2.Size = New System.Drawing.Size(169, 13)
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "ΛΗΞΗ ΘΕΡΑΠΕΙΑΣ"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -169,43 +181,43 @@ Partial Class Form1
         'kod
         '
         Me.kod.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.kod.Location = New System.Drawing.Point(574, 15)
+        Me.kod.Location = New System.Drawing.Point(564, 15)
         Me.kod.Name = "kod"
-        Me.kod.Size = New System.Drawing.Size(235, 20)
+        Me.kod.Size = New System.Drawing.Size(245, 20)
         Me.kod.TabIndex = 3
         '
         'EPO
         '
         Me.EPO.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.EPO.Location = New System.Drawing.Point(574, 49)
+        Me.EPO.Location = New System.Drawing.Point(564, 49)
         Me.EPO.Name = "EPO"
-        Me.EPO.Size = New System.Drawing.Size(235, 20)
+        Me.EPO.Size = New System.Drawing.Size(245, 20)
         Me.EPO.TabIndex = 4
         '
         'ONOMA
         '
         Me.ONOMA.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ONOMA.Location = New System.Drawing.Point(574, 95)
+        Me.ONOMA.Location = New System.Drawing.Point(564, 95)
         Me.ONOMA.Name = "ONOMA"
-        Me.ONOMA.Size = New System.Drawing.Size(235, 20)
+        Me.ONOMA.Size = New System.Drawing.Size(245, 20)
         Me.ONOMA.TabIndex = 2
         '
         'TextBox1
         '
         Me.TextBox1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(182, 93)
+        Me.TextBox1.Location = New System.Drawing.Point(178, 93)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(294, 22)
+        Me.TextBox1.Size = New System.Drawing.Size(288, 22)
         Me.TextBox1.TabIndex = 1
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Label6.Location = New System.Drawing.Point(182, 59)
+        Me.Label6.Location = New System.Drawing.Point(178, 59)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(294, 13)
+        Me.Label6.Size = New System.Drawing.Size(288, 13)
         Me.Label6.TabIndex = 9
         Me.Label6.Text = "ΕΠΩΝΥΜΟ ή ΤΗΛΕΦΩΝΟ"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -215,7 +227,7 @@ Partial Class Form1
         Me.TextBox5.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.TextBox5.Location = New System.Drawing.Point(3, 49)
         Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(173, 20)
+        Me.TextBox5.Size = New System.Drawing.Size(169, 20)
         Me.TextBox5.TabIndex = 10
         Me.TextBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -225,7 +237,7 @@ Partial Class Form1
         Me.NEADIAGNOSI.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
         Me.NEADIAGNOSI.Location = New System.Drawing.Point(3, 121)
         Me.NEADIAGNOSI.Name = "NEADIAGNOSI"
-        Me.NEADIAGNOSI.Size = New System.Drawing.Size(173, 28)
+        Me.NEADIAGNOSI.Size = New System.Drawing.Size(169, 28)
         Me.NEADIAGNOSI.TabIndex = 11
         Me.NEADIAGNOSI.Text = "Νέα Διάγνωση"
         Me.NEADIAGNOSI.UseVisualStyleBackColor = True
@@ -234,9 +246,9 @@ Partial Class Form1
         'EPILOGH
         '
         Me.EPILOGH.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.EPILOGH.Location = New System.Drawing.Point(182, 121)
+        Me.EPILOGH.Location = New System.Drawing.Point(178, 121)
         Me.EPILOGH.Name = "EPILOGH"
-        Me.EPILOGH.Size = New System.Drawing.Size(294, 28)
+        Me.EPILOGH.Size = New System.Drawing.Size(288, 28)
         Me.EPILOGH.TabIndex = 17
         Me.EPILOGH.Text = "Επιλογή Μαθητή"
         Me.EPILOGH.UseVisualStyleBackColor = True
@@ -246,7 +258,7 @@ Partial Class Form1
         Me.Label4.AutoSize = True
         Me.TableLayoutPanel1.SetColumnSpan(Me.Label4, 2)
         Me.Label4.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Label4.Location = New System.Drawing.Point(482, 105)
+        Me.Label4.Location = New System.Drawing.Point(472, 105)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(86, 13)
         Me.Label4.TabIndex = 7
@@ -257,7 +269,7 @@ Partial Class Form1
         Me.Label5.AutoSize = True
         Me.TableLayoutPanel1.SetColumnSpan(Me.Label5, 2)
         Me.Label5.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Label5.Location = New System.Drawing.Point(482, 59)
+        Me.Label5.Location = New System.Drawing.Point(472, 59)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(86, 13)
         Me.Label5.TabIndex = 8
@@ -268,7 +280,7 @@ Partial Class Form1
         Me.Label3.AutoSize = True
         Me.TableLayoutPanel1.SetColumnSpan(Me.Label3, 2)
         Me.Label3.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Label3.Location = New System.Drawing.Point(482, 25)
+        Me.Label3.Location = New System.Drawing.Point(472, 25)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(86, 13)
         Me.Label3.TabIndex = 6
@@ -278,9 +290,9 @@ Partial Class Form1
         '
         Me.EGGRAFESN.AutoSize = True
         Me.EGGRAFESN.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.EGGRAFESN.Location = New System.Drawing.Point(574, 139)
+        Me.EGGRAFESN.Location = New System.Drawing.Point(564, 139)
         Me.EGGRAFESN.Name = "EGGRAFESN"
-        Me.EGGRAFESN.Size = New System.Drawing.Size(235, 13)
+        Me.EGGRAFESN.Size = New System.Drawing.Size(245, 13)
         Me.EGGRAFESN.TabIndex = 15
         Me.EGGRAFESN.Text = ".."
         Me.EGGRAFESN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -288,22 +300,31 @@ Partial Class Form1
         'BNext
         '
         Me.BNext.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.BNext.Location = New System.Drawing.Point(528, 121)
+        Me.BNext.Location = New System.Drawing.Point(518, 121)
         Me.BNext.Name = "BNext"
         Me.BNext.Size = New System.Drawing.Size(40, 28)
         Me.BNext.TabIndex = 12
         Me.BNext.Text = "=>"
         Me.BNext.UseVisualStyleBackColor = True
         '
-        'Button1
+        'bPrev
         '
-        Me.Button1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button1.Location = New System.Drawing.Point(482, 121)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(40, 28)
-        Me.Button1.TabIndex = 18
-        Me.Button1.Text = "<="
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.bPrev.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.bPrev.Location = New System.Drawing.Point(472, 121)
+        Me.bPrev.Name = "bPrev"
+        Me.bPrev.Size = New System.Drawing.Size(40, 28)
+        Me.bPrev.TabIndex = 18
+        Me.bPrev.Text = "<="
+        Me.bPrev.UseVisualStyleBackColor = True
+        '
+        'bAkyr
+        '
+        Me.bAkyr.Location = New System.Drawing.Point(3, 75)
+        Me.bAkyr.Name = "bAkyr"
+        Me.bAkyr.Size = New System.Drawing.Size(75, 23)
+        Me.bAkyr.TabIndex = 19
+        Me.bAkyr.Text = "Ακυρο"
+        Me.bAkyr.UseVisualStyleBackColor = True
         '
         'Panel2
         '
@@ -716,18 +737,24 @@ Partial Class Form1
         '
         'TableLayoutPanel3
         '
-        Me.TableLayoutPanel3.ColumnCount = 3
-        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 293.0!))
+        Me.TableLayoutPanel3.ColumnCount = 4
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133.0!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 240.0!))
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124.0!))
         Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231.0!))
-        Me.TableLayoutPanel3.Controls.Add(Me.Button2, 1, 4)
-        Me.TableLayoutPanel3.Controls.Add(Me.DateTimePicker1, 2, 2)
-        Me.TableLayoutPanel3.Controls.Add(Me.Label7, 1, 1)
-        Me.TableLayoutPanel3.Controls.Add(Me.Label25, 1, 2)
-        Me.TableLayoutPanel3.Controls.Add(Me.TextBox3, 2, 1)
-        Me.TableLayoutPanel3.Controls.Add(Me.ComboBox1, 2, 3)
-        Me.TableLayoutPanel3.Controls.Add(Me.Label26, 1, 3)
-        Me.TableLayoutPanel3.Controls.Add(Me.Button3, 2, 4)
+        Me.TableLayoutPanel3.Controls.Add(Me.saveSynedr, 2, 4)
+        Me.TableLayoutPanel3.Controls.Add(Me.DateTimePicker1, 3, 2)
+        Me.TableLayoutPanel3.Controls.Add(Me.Label7, 2, 1)
+        Me.TableLayoutPanel3.Controls.Add(Me.Label25, 2, 2)
+        Me.TableLayoutPanel3.Controls.Add(Me.TextBox3, 3, 1)
+        Me.TableLayoutPanel3.Controls.Add(Me.ComboTher, 3, 3)
+        Me.TableLayoutPanel3.Controls.Add(Me.Label26, 2, 3)
+        Me.TableLayoutPanel3.Controls.Add(Me.Button3, 3, 4)
+        Me.TableLayoutPanel3.Controls.Add(Me.Label28, 0, 2)
+        Me.TableLayoutPanel3.Controls.Add(Me.Label27, 0, 1)
+        Me.TableLayoutPanel3.Controls.Add(Me.EOS, 1, 2)
+        Me.TableLayoutPanel3.Controls.Add(Me.APO, 1, 1)
+        Me.TableLayoutPanel3.Controls.Add(Me.SavePeriodos, 0, 4)
         Me.TableLayoutPanel3.Location = New System.Drawing.Point(3, 0)
         Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
         Me.TableLayoutPanel3.RowCount = 5
@@ -736,21 +763,21 @@ Partial Class Form1
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27.0!))
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8.0!))
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(648, 170)
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(648, 157)
         Me.TableLayoutPanel3.TabIndex = 0
         '
-        'Button2
+        'saveSynedr
         '
-        Me.Button2.Location = New System.Drawing.Point(296, 119)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(118, 28)
-        Me.Button2.TabIndex = 0
-        Me.Button2.Text = "ΑΠΟΘΗΚΕΥΣΗ"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.saveSynedr.Location = New System.Drawing.Point(376, 119)
+        Me.saveSynedr.Name = "saveSynedr"
+        Me.saveSynedr.Size = New System.Drawing.Size(118, 28)
+        Me.saveSynedr.TabIndex = 0
+        Me.saveSynedr.Text = "ΑΠΟΘΗΚΕΥΣΗ"
+        Me.saveSynedr.UseVisualStyleBackColor = True
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(420, 57)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(500, 57)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
         Me.DateTimePicker1.TabIndex = 1
@@ -758,7 +785,7 @@ Partial Class Form1
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(296, 29)
+        Me.Label7.Location = New System.Drawing.Point(376, 29)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(86, 13)
         Me.Label7.TabIndex = 2
@@ -767,7 +794,7 @@ Partial Class Form1
         'Label25
         '
         Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(296, 54)
+        Me.Label25.Location = New System.Drawing.Point(376, 54)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(73, 13)
         Me.Label25.TabIndex = 3
@@ -776,23 +803,23 @@ Partial Class Form1
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(420, 32)
+        Me.TextBox3.Location = New System.Drawing.Point(500, 32)
         Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox3.Size = New System.Drawing.Size(200, 20)
         Me.TextBox3.TabIndex = 4
         '
-        'ComboBox1
+        'ComboTher
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(420, 84)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox1.TabIndex = 5
+        Me.ComboTher.FormattingEnabled = True
+        Me.ComboTher.Location = New System.Drawing.Point(500, 84)
+        Me.ComboTher.Name = "ComboTher"
+        Me.ComboTher.Size = New System.Drawing.Size(200, 21)
+        Me.ComboTher.TabIndex = 5
         '
         'Label26
         '
         Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(296, 81)
+        Me.Label26.Location = New System.Drawing.Point(376, 81)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(75, 13)
         Me.Label26.TabIndex = 6
@@ -801,21 +828,90 @@ Partial Class Form1
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(420, 119)
+        Me.Button3.Location = New System.Drawing.Point(500, 119)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(149, 30)
+        Me.Button3.Size = New System.Drawing.Size(200, 30)
         Me.Button3.TabIndex = 7
         Me.Button3.Text = "FORM2"
         Me.Button3.UseVisualStyleBackColor = True
         '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Location = New System.Drawing.Point(3, 54)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(86, 13)
+        Me.Label28.TabIndex = 11
+        Me.Label28.Text = "ΟΝΟΜΑ ΠΑΙΔΙΟΥ"
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Location = New System.Drawing.Point(3, 29)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(86, 13)
+        Me.Label27.TabIndex = 10
+        Me.Label27.Text = "ΟΝΟΜΑ ΠΑΙΔΙΟΥ"
+        '
+        'EOS
+        '
+        Me.EOS.Location = New System.Drawing.Point(136, 57)
+        Me.EOS.Name = "EOS"
+        Me.EOS.Size = New System.Drawing.Size(200, 20)
+        Me.EOS.TabIndex = 9
+        '
+        'APO
+        '
+        Me.APO.Location = New System.Drawing.Point(136, 32)
+        Me.APO.Name = "APO"
+        Me.APO.Size = New System.Drawing.Size(200, 20)
+        Me.APO.TabIndex = 8
+        '
+        'SavePeriodos
+        '
+        Me.SavePeriodos.Location = New System.Drawing.Point(3, 119)
+        Me.SavePeriodos.Name = "SavePeriodos"
+        Me.SavePeriodos.Size = New System.Drawing.Size(127, 35)
+        Me.SavePeriodos.TabIndex = 12
+        Me.SavePeriodos.Text = "ΑΠΟΘΗΚΕΥΣΗ ΠΕΡΙΟΔΟΥ"
+        Me.SavePeriodos.UseVisualStyleBackColor = True
+        '
         'Panel4
         '
+        Me.Panel4.Controls.Add(Me.GridView2)
+        Me.Panel4.Controls.Add(Me.bDeleSynedr)
+        Me.Panel4.Controls.Add(Me.GridView1)
         Me.Panel4.Controls.Add(Me.TableLayoutPanel5)
         Me.Panel4.Controls.Add(Me.TableLayoutPanel4)
-        Me.Panel4.Location = New System.Drawing.Point(833, 216)
+        Me.Panel4.Location = New System.Drawing.Point(833, 199)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(652, 434)
+        Me.Panel4.Size = New System.Drawing.Size(652, 451)
         Me.Panel4.TabIndex = 3
+        '
+        'GridView2
+        '
+        Me.GridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.GridView2.Location = New System.Drawing.Point(4, 85)
+        Me.GridView2.Name = "GridView2"
+        Me.GridView2.Size = New System.Drawing.Size(560, 150)
+        Me.GridView2.TabIndex = 5
+        '
+        'bDeleSynedr
+        '
+        Me.bDeleSynedr.Location = New System.Drawing.Point(571, 0)
+        Me.bDeleSynedr.Name = "bDeleSynedr"
+        Me.bDeleSynedr.Size = New System.Drawing.Size(75, 23)
+        Me.bDeleSynedr.TabIndex = 4
+        Me.bDeleSynedr.Text = "Διαγραφή"
+        Me.bDeleSynedr.UseVisualStyleBackColor = True
+        '
+        'GridView1
+        '
+        Me.GridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.GridView1.Location = New System.Drawing.Point(3, 0)
+        Me.GridView1.Name = "GridView1"
+        Me.GridView1.Size = New System.Drawing.Size(561, 78)
+        Me.GridView1.TabIndex = 3
         '
         'TableLayoutPanel5
         '
@@ -839,16 +935,17 @@ Partial Class Form1
         'TableLayoutPanel4
         '
         Me.TableLayoutPanel4.ColumnCount = 2
-        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel4.Location = New System.Drawing.Point(0, 3)
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.86287!))
+        Me.TableLayoutPanel4.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.13713!))
+        Me.TableLayoutPanel4.Location = New System.Drawing.Point(3, 161)
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
         Me.TableLayoutPanel4.RowCount = 4
-        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56.0!))
-        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44.0!))
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57.0!))
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47.0!))
-        Me.TableLayoutPanel4.Size = New System.Drawing.Size(652, 248)
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel4.Size = New System.Drawing.Size(610, 81)
         Me.TableLayoutPanel4.TabIndex = 0
         '
         'OpenFileDialog1
@@ -866,6 +963,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Panel1)
         Me.Name = "Form1"
         Me.Text = "Form1"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
@@ -876,6 +974,8 @@ Partial Class Form1
         Me.TableLayoutPanel3.ResumeLayout(False)
         Me.TableLayoutPanel3.PerformLayout()
         Me.Panel4.ResumeLayout(False)
+        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -941,13 +1041,22 @@ Partial Class Form1
     Friend WithEvents TextBox20 As TextBox
     Friend WithEvents SAVEDIAGN As Button
     Friend WithEvents EPILOGH As Button
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents bPrev As Button
+    Friend WithEvents saveSynedr As Button
     Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents Label7 As Label
     Friend WithEvents Label25 As Label
     Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents ComboTher As ComboBox
     Friend WithEvents Label26 As Label
     Friend WithEvents Button3 As Button
+    Friend WithEvents GridView1 As DataGridView
+    Friend WithEvents bAkyr As Button
+    Friend WithEvents bDeleSynedr As Button
+    Friend WithEvents Label28 As Label
+    Friend WithEvents Label27 As Label
+    Friend WithEvents EOS As DateTimePicker
+    Friend WithEvents APO As DateTimePicker
+    Friend WithEvents SavePeriodos As Button
+    Friend WithEvents GridView2 As DataGridView
 End Class

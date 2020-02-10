@@ -15,14 +15,6 @@ Public Class Form2
 
     'Set up connection string
     Dim cnString As String
-    'Public Property PLATOS() As Integer
-    '    Get
-    '        Return VALUE
-    '    End Get
-    '    Set(ByVal value As Integer)
-
-    '    End Set
-    'End Property
 
     Private STHLH_ID As Integer = 1
     Public Property STHLHTOY_ID() As Integer
@@ -38,24 +30,6 @@ Public Class Form2
         End Set
     End Property
 
-
-
-
-
-    Private Sub cmdAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        ' FormAdd("FrmUNIT_MEASURE_ADD")
-    End Sub
-
-    'Private Sub cmdCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCancel.Click
-    '    Try
-    '        da.Update(ds, "PEL")
-    '    Catch ex As Exception
-    '        MsgBox("δεν αποθηκευτηκε" + ex.Message)
-    '    End Try
-
-    '    Me.Close()
-    'End Sub
-
     Private Sub FrmUNIT_MEASURE_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         '  sqlSTR = "SELECT * FROM TBL_Unit_Measure"
         ' FillListView(ExecuteSQLQuery(sqlSTR), lstunit, 0)
@@ -69,7 +43,7 @@ Public Class Form2
         cnString = gConnect ' "Data Source=localhost\SQLEXPRESS;Integrated Security=True;database=thermo"
         'Str_Connection = cnString
         Dim SQLqry
-        SQLqry = "SELECT TOP 20 EPO,ID FROM THERAP " ' ORDER BY HME "
+        SQLqry = "SELECT TOP 20 EPO,ID,LOGCH,ERGCH,EIDCH,OIKCH FROM THERAP " ' ORDER BY HME "
         'conn = New SqlConnection(cnString)
 
         Dim conn As New OleDbConnection
@@ -113,6 +87,8 @@ Public Class Form2
 
         Me.Close()
     End Sub
+
+
     ' Private Sub cmdEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
     ' FormEdit("FrmUNIT_MEASURE")
     'End Sub

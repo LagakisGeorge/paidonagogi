@@ -24,7 +24,6 @@ Partial Class Form2
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.BindingNavigator1 = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
@@ -46,15 +45,6 @@ Partial Class Form2
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(176, 40)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(64, 45)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'BindingNavigator1
         '
         Me.BindingNavigator1.AddNewItem = Nothing
@@ -71,7 +61,7 @@ Partial Class Form2
         Me.BindingNavigator1.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.BindingNavigator1.Name = "BindingNavigator1"
         Me.BindingNavigator1.PositionItem = Me.BindingNavigatorPositionItem
-        Me.BindingNavigator1.Size = New System.Drawing.Size(872, 25)
+        Me.BindingNavigator1.Size = New System.Drawing.Size(792, 25)
         Me.BindingNavigator1.TabIndex = 2
         Me.BindingNavigator1.Text = "BindingNavigator1"
         '
@@ -151,29 +141,28 @@ Partial Class Form2
         'GridView1
         '
         Me.GridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridView1.Location = New System.Drawing.Point(26, 118)
+        Me.GridView1.Location = New System.Drawing.Point(12, 12)
         Me.GridView1.Name = "GridView1"
-        Me.GridView1.Size = New System.Drawing.Size(747, 292)
+        Me.GridView1.Size = New System.Drawing.Size(735, 354)
         Me.GridView1.TabIndex = 3
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(346, 55)
+        Me.Button2.Location = New System.Drawing.Point(613, 372)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.Size = New System.Drawing.Size(134, 23)
         Me.Button2.TabIndex = 4
-        Me.Button2.Text = "Button2"
+        Me.Button2.Text = "Εξοδος"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(872, 525)
+        Me.ClientSize = New System.Drawing.Size(792, 525)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.GridView1)
         Me.Controls.Add(Me.BindingNavigator1)
-        Me.Controls.Add(Me.Button1)
         Me.Name = "Form2"
         Me.Text = "Form2"
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -185,8 +174,6 @@ Partial Class Form2
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents Button1 As Button
     Friend WithEvents BindingSource1 As BindingSource
     Friend WithEvents BindingNavigator1 As BindingNavigator
     Friend WithEvents BindingNavigatorCountItem As ToolStripLabel
