@@ -221,7 +221,7 @@ Public Class Form1
         Else
             BNext.Enabled = False
             EPO.Text = ""
-
+            Exit Sub
 
 
         End If
@@ -357,7 +357,8 @@ Public Class Form1
         PAINT_GRID()
 
         PAINT_GRID_PERIOD()
-
+        DateTimePicker1.Format = DateTimePickerFormat.Custom
+        DateTimePicker1.CustomFormat = "dd MM yyyy hh mm "
 
 
 
@@ -446,11 +447,11 @@ Public Class Form1
 
     End Sub
     Private Sub PAINT_GRID()
-        Dim STHLHTOY_ID As Int16 = 1
+        Dim STHLHTOY_ID As Int16 = 0
         'cnString = gConnect ' "Data Source=localhost\SQLEXPRESS;Integrated Security=True;database=thermo"
         'Str_Connection = cnString
         Dim SQLqry
-        SQLqry = "SELECT TOP 100 ID,IDGN,IDTH,HME,ORES FROM SYNEDRIES WHERE IDGN= " + F_CIdDiagn  ' ORDER BY HME "
+        SQLqry = "SELECT TOP 100 ID,CONVERT(CHAR(10),HME,3) AS [ΗΜΕΡ],ORES AS [ΩΡΕΣ] FROM SYNEDRIES WHERE IDGN= " + F_CIdDiagn  ' ORDER BY HME "
         'conn = New SqlConnection(cnString)
 
         Dim conn As New OleDbConnection
@@ -474,8 +475,10 @@ Public Class Form1
             GridView1.DataSource = ds
             GridView1.DataMember = "PEL"
 
-            'GridView1.Columns(STHLHTOY_ID).Width = 0
+            GridView1.Columns(STHLHTOY_ID).Width = 0
             GridView1.Columns(STHLHTOY_ID).Visible = False
+            '  Dim n As Integer = GridView1.Columns.Count
+            GridView1.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
 
         Catch ex As SqlException
             MsgBox(ex.ToString)
@@ -526,11 +529,11 @@ Public Class Form1
 
 
 
-        Dim STHLHTOY_ID As Int16 = 1
+        Dim STHLHTOY_ID As Int16 = 0
         'cnString = gConnect ' "Data Source=localhost\SQLEXPRESS;Integrated Security=True;database=thermo"
         'Str_Connection = cnString
         Dim SQLqry
-        SQLqry = "SELECT TOP 100 ID,IDGN,APO,EOS FROM PERIODOI WHERE IDGN= " + F_CIdDiagn  ' ORDER BY HME "
+        SQLqry = "SELECT TOP 100 ID,CONVERT(CHAR(10),APO,3) AS [ΑΠΟ],CONVERT(CHAR(10),EOS,3) AS [ΕΩΣ] FROM PERIODOI WHERE IDGN= " + F_CIdDiagn  ' ORDER BY HME "
         'conn = New SqlConnection(cnString)
 
         Dim conn As New OleDbConnection
@@ -554,8 +557,11 @@ Public Class Form1
             GridView2.DataSource = ds
             GridView2.DataMember = "PEL"
 
-            'GridView1.Columns(STHLHTOY_ID).Width = 0
+            GridView2.Columns(STHLHTOY_ID).Width = 0
             GridView2.Columns(STHLHTOY_ID).Visible = False
+
+            Dim n As Integer = GridView2.Columns.Count
+            GridView2.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
 
         Catch ex As SqlException
             MsgBox(ex.ToString)
@@ -620,5 +626,14 @@ Public Class Form1
         'GO
 
 
+    End Sub
+
+    Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles Button1.Click
+        ' ο κωδικος του προιοντος που διαλεξα
+        Dim mk As String = GridView2.CurrentRow.Cells(0).Value.ToString
+        Dim FOFO As New DataTable
+        ExecuteSQLQuery("DELETE FROM PERIODOI WHERE ID=" + mk, FOFO)
+        MsgBox("ΔΙΕΓΡΑΦΗ")
+        PAINT_GRID_PERIOD()
     End Sub
 End Class
