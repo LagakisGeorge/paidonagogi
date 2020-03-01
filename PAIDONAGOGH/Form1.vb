@@ -260,9 +260,10 @@ Public Class Form1
 
         End If
         SHOW_GNOMATEYSI()
+        PAINT_GRID_PERIOD()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles NEADIAGNOSI.Click
+    Private Sub NEADIAGNOSI_CLICK(sender As Object, e As EventArgs) Handles NEADIAGNOSI.Click
         Dim SQLDT2 As New DataTable
         Dim MKOD, C As String
         MKOD = SQLpELATES.Rows(f_sqlDT)("KOD")
@@ -274,7 +275,7 @@ Public Class Form1
         F_CIdDiagn = NEWID
         SAVEDIAGN.Enabled = True
 
-        p1.Image = Nothing
+        P1.Image = Nothing
 
 
         'INSERT INTO [dbo].[GNOMATEYSI] 
@@ -459,7 +460,7 @@ Public Class Form1
 
     End Function
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles bPrev.Click
+    Private Sub BPREV_Click(sender As Object, e As EventArgs) Handles bPrev.Click
         f_sqlDT = f_sqlDT - 1
         If f_sqlDT >= 0 Then 'SQLpELATES.Rows.Count Then
             Try
@@ -480,6 +481,7 @@ Public Class Form1
 
         End If
         SHOW_GNOMATEYSI()
+        PAINT_GRID_PERIOD()
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -548,7 +550,7 @@ Public Class Form1
 
 
 
-
+        ExecuteSQLQuery("UPDATE PERIODOI SET SYNEDRIES=ISNULL(SYNEDRIES,0)+1  WHERE '" + Chme + "'>=APO AND '" + Chme + "'<=EOS AND IDGN=" + cDGN)
 
         ExecuteSQLQuery("insert into SYNEDRIES (IDTH,IDGN,ORES,HME) VALUES (" + cIDTH + "," + cDGN + ",1,'" + Format(DateTimePicker1.Value, "MM/dd/yyyy HH:mm") + "')")
         '    INSERT INTO [dbo].[SYNEDRIES]
@@ -592,7 +594,7 @@ Public Class Form1
         'cnString = gConnect ' "Data Source=localhost\SQLEXPRESS;Integrated Security=True;database=thermo"
         'Str_Connection = cnString
         Dim SQLqry
-        SQLqry = "SELECT TOP 100 ID,CONVERT(CHAR(10),APO,3) AS [ΑΠΟ],CONVERT(CHAR(10),EOS,3) AS [ΕΩΣ] FROM PERIODOI WHERE IDGN= " + F_CIdDiagn  ' ORDER BY HME "
+        SQLqry = "SELECT TOP 100 ID,CONVERT(CHAR(10),APO,3) AS [ΑΠΟ],CONVERT(CHAR(10),EOS,3) AS [ΕΩΣ],SYNEDRIES,AJIAAPOD,ATIM FROM PERIODOI WHERE IDGN= " + F_CIdDiagn + " ORDER by APO "
         'conn = New SqlConnection(cnString)
 
         Dim conn As New OleDbConnection
@@ -649,12 +651,41 @@ Public Class Form1
     End Sub
 
     Private Sub SavePeriodos_Click(sender As Object, e As EventArgs) Handles SavePeriodos.Click
-        '  Dim cIDTH As String = Split(ComboTher.Text, ";")(1)
+
         Dim cDGN = F_CIdDiagn
+
+
+        'ΕΛΕΓΧΟΣ ΓΙΑ ΕΠΙΚΑΛΥΨΗ ΗΜΕΡΟΜΗΝΙΩΝ
+        Dim AP1 As String = Format(APO.Value, "MM/dd/yyyy")
+        Dim EOS1 As String = Format(EOS.Value, "MM/dd/yyyy")
+        Dim SQL As String = "select count(*) from PERIODOI WHERE ( ('" + AP1 + "'>=APO AND '" + AP1 + "'<=EOS) OR "
+        SQL = SQL + "( '" + EOS1 + "'>=APO AND '" + EOS1 + "'<=EOS) ) And IDGN = " + cDGN
+        Dim sqlt1 As New DataTable
+        ExecuteSQLQuery(SQL, sqlt1)
+        If sqlt1.Rows(0)(0) > 0 Then
+            MsgBox("ΠΡΟΣΟΧΗ!! ΕΠΙΚΑΛΥΨΗ ΠΕΡΙΟΔΟΥ ΣΕ ΑΥΤΟ ΤΟ ΔΙΑΤΗΜΑ")
+            Exit Sub
+        End If
+
+        ' Dim sqlt1 As New DataTable
+        ExecuteSQLQuery("select count(*) from PERIODOI WHERE APO>='" + AP1 + "' AND APO<='" + EOS1 + "'", sqlt1)
+        If sqlt1.Rows(0)(0) > 0 Then
+            MsgBox("ΠΡΟΣΟΧΗ!! ΕΠΙΚΑΛΥΨΗ ΠΕΡΙΟΔΟΥ ΣΕ ΑΥΤΟ ΤΟ ΔΙΑΤΗΜΑ")
+            Exit Sub
+        End If
+
+
+
+        ' Dim cIDTH As String = Split(ComboTher.Text, ";")(1)
+
         ExecuteSQLQuery("insert into PERIODOI (IDGN,APO,EOS) VALUES (" + cDGN + ",'" + Format(APO.Value, "MM/dd/yyyy") + "','" + Format(EOS.Value, "MM/dd/yyyy") + "')")
         PAINT_GRID_PERIOD()
 
+        '  Dim TT As TimeSpan
 
+
+        APO.Value = EOS.Value.AddDays(1)
+        EOS.Value = APO.Value.AddDays(30)
 
 
 
@@ -687,7 +718,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         ' ο κωδικος του προιοντος που διαλεξα
         Dim mk As String = GridView2.CurrentRow.Cells(0).Value.ToString
         Dim FOFO As New DataTable
@@ -736,7 +767,7 @@ Public Class Form1
     'p2.Image = om
     '  End Sub
 
-    Private Sub P1_Click(sender As Object, e As EventArgs) Handles p1.Click
+    Private Sub P1_Click(sender As Object, e As EventArgs) Handles P1.Click
         If F_CIdDiagn = Nothing Then
             Exit Sub
         End If
@@ -766,7 +797,7 @@ Public Class Form1
         '   End Using
 
 
-        p1.Image = ResizeImage(source)
+        P1.Image = ResizeImage(source)
 
         Dim C As String = "c:\mercvb" + "\images\" + F_CIdDiagn + ".JPG"
         ExecuteSQLQuery("UPDATE GNOMATEYSI SET EIK='" + C + "' WHERE ID=" + F_CIdDiagn)
@@ -779,7 +810,7 @@ Public Class Form1
         End If
 
 
-        p1.ImageLocation = C
+        P1.ImageLocation = C
     End Sub
 
     Public Overloads Shared Function ResizeImage(ByVal InputImage As Image) As Image
