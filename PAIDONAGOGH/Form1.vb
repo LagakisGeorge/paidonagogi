@@ -15,7 +15,7 @@ Public Class Form1
     Dim F_CIdDiagn As String ' id gnomateysi 
     Dim F_cIdPel As String ' id pel που εχω διαλεξει
 
-
+    Dim F_ImageFile As String = ""
     'create data adapter
     Dim da As OleDbDataAdapter ' SqlDataAdapter
 
@@ -405,17 +405,24 @@ Public Class Form1
             EIDH.Text = sqlDT.Rows(0)("EIDH").ToString
             OIKH.Text = sqlDT.Rows(0)("OIKH").ToString
             FYSH.Text = sqlDT.Rows(0)("FYSH").ToString
+            If IsDBNull(sqlDT.Rows(0)("EIK")) Then
+                F_ImageFile = ""
 
-            If Len(sqlDT.Rows(0)("EIK").ToString) > 0 Then
-                Dim source As New Bitmap(sqlDT.Rows(0)("EIK").ToString)
-                p1.Image = ResizeImage(source)
+            Else
+                F_ImageFile = sqlDT.Rows(0)("EIK").ToString
 
             End If
 
+            If Len(sqlDT.Rows(0)("EIK").ToString) > 0 Then
+                    Dim source As New Bitmap(F_ImageFile)
+                    P1.Image = ResizeImage(source)
+
+                End If
 
 
-        Else
-            ADEIO = 1
+
+            Else
+                ADEIO = 1
             NEADIAGNOSI.Enabled = True
             NEADIAGNOSI.BackColor = Color.Green
             ' DIORTOSI.Enabled = False
@@ -780,8 +787,25 @@ Public Class Form1
     End Function
 
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
-        picture.PictureBox1.Image = p1.Image
-        picture.Show()
+        ' picture.PictureBox1.Image = p1.Image
+        ' PICTURE.Show()
+
+
+        If Len(F_ImageFile) = 0 Then
+            Exit Sub
+        End If
+
+        Dim myForm2 As New PICTURE
+        myForm2.FIMAGEFILE.Text = F_ImageFile
+
+        myForm2.PictureBox1.Image = Image.FromFile(F_ImageFile)
+        myForm2.ResizeImage(myForm2.PictureBox1.Image)
+        myForm2.ShowDialog()
+        'Any actions after the user returns would be here
+        myForm2.Dispose()
+
+
+
 
 
     End Sub
