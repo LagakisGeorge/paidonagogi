@@ -304,6 +304,8 @@ Public Class Form1
 
     Private Sub SAVEDIAGN_Click(sender As Object, e As EventArgs) Handles SAVEDIAGN.Click
         BNext.Enabled = True
+        bPrev.Enabled = True
+
         NEADIAGNOSI.Enabled = True
         ' DIORTOSI.Enabled = True
 
@@ -368,15 +370,15 @@ Public Class Form1
 
         ' Dim bm_source As New Bitmap(p1.Image)
         '  p1.Image = ResizeImage(bm_source)
-        Try
-            Dim CC As String
-            CC = "c:\mercvb\images\" + F_CIdDiagn + ".JPG"  'p1.ImageLocation
-            Dim source As New Bitmap(CC) 'OpenFileDialog2.FileName) '"C:\image.png")
-            p1.Image = ResizeImage(source)
-        Catch ex As Exception
-            p1.Image = Nothing
+        'Try
+        '    Dim CC As String
+        '    CC = "c:\mercvb\images\" + F_CIdDiagn + ".JPG"  'p1.ImageLocation
+        '    Dim source As New Bitmap(CC) 'OpenFileDialog2.FileName) '"C:\image.png")
+        '    p1.Image = ResizeImage(source)
+        'Catch ex As Exception
+        '    p1.Image = Nothing
 
-        End Try
+        'End Try
 
 
     End Sub
@@ -740,7 +742,13 @@ Public Class Form1
 
 
         '  OpenFileDialog2.Filter = "*.JPG"
-        OpenFileDialog2.ShowDialog()
+        ' OpenFileDialog2.ShowDialog()
+
+        Dim res As DialogResult = OpenFileDialog2.ShowDialog()
+        If res = Windows.Forms.DialogResult.Cancel Then
+            Exit Sub
+        End If
+
 
 
         Dim source As New Bitmap(OpenFileDialog2.FileName) '"C:\image.png")
@@ -777,5 +785,7 @@ Public Class Form1
 
 
     End Sub
+
+
 End Class
 
