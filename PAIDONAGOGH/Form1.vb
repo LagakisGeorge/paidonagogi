@@ -155,7 +155,7 @@ Public Class Form1
 
     Public Function ExecuteSQLQuery(ByVal SQLQuery As String) As DataTable
         Try
-            Dim sqlCon As New OleDbConnection(GCONNECT)
+            Dim sqlCon As New OleDbConnection(gConnect)
 
             Dim sqlDA As New OleDbDataAdapter(SQLQuery, sqlCon)
 
@@ -184,7 +184,7 @@ Public Class Form1
 
 
         Try
-            Dim sqlCon As New OleDbConnection(GCONNECT)
+            Dim sqlCon As New OleDbConnection(gConnect)
 
             Dim sqlDA As New OleDbDataAdapter(SQLQuery, sqlCon)
 
@@ -256,6 +256,8 @@ Public Class Form1
             EGGRAFESN.Text = F_cIdPel
 
 
+
+
         End If
         SHOW_GNOMATEYSI()
     End Sub
@@ -271,6 +273,9 @@ Public Class Form1
         Dim NEWID As String = SQLDT2.Rows(0)(0).ToString
         F_CIdDiagn = NEWID
         SAVEDIAGN.Enabled = True
+
+        p1.Image = Nothing
+
 
         'INSERT INTO [dbo].[GNOMATEYSI] 
         ' (<KOD, nchar(10),>
@@ -358,9 +363,20 @@ Public Class Form1
 
         PAINT_GRID_PERIOD()
         DateTimePicker1.Format = DateTimePickerFormat.Custom
-        DateTimePicker1.CustomFormat = "dd MM yyyy hh mm "
+        DateTimePicker1.CustomFormat = "dd/MM/yyyy  hh:mm "
 
 
+        ' Dim bm_source As New Bitmap(p1.Image)
+        '  p1.Image = ResizeImage(bm_source)
+        Try
+            Dim CC As String
+            CC = "c:\mercvb\images\" + F_CIdDiagn + ".JPG"  'p1.ImageLocation
+            Dim source As New Bitmap(CC) 'OpenFileDialog2.FileName) '"C:\image.png")
+            p1.Image = ResizeImage(source)
+        Catch ex As Exception
+            p1.Image = Nothing
+
+        End Try
 
 
     End Sub
@@ -388,6 +404,13 @@ Public Class Form1
             OIKH.Text = sqlDT.Rows(0)("OIKH").ToString
             FYSH.Text = sqlDT.Rows(0)("FYSH").ToString
 
+            If Len(sqlDT.Rows(0)("EIK").ToString) > 0 Then
+                Dim source As New Bitmap(sqlDT.Rows(0)("EIK").ToString)
+                p1.Image = ResizeImage(source)
+
+            End If
+
+
 
         Else
             ADEIO = 1
@@ -398,6 +421,7 @@ Public Class Form1
             ' DIORTOSI.BackColor = Color.White
             '  DIORTOSI.BackColor = Color.Green
 
+            p1.Image = Nothing
 
 
             KATHGORIA.Text = ""
@@ -429,11 +453,18 @@ Public Class Form1
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles bPrev.Click
         f_sqlDT = f_sqlDT - 1
         If f_sqlDT >= 0 Then 'SQLpELATES.Rows.Count Then
+            Try
 
-            EPO.Text = SQLpELATES.Rows(f_sqlDT)("EPO")
-            kod.Text = SQLpELATES.Rows(f_sqlDT)("kod")
-            F_cIdPel = SQLpELATES.Rows(f_sqlDT)("ID")  'f_sqlDT = 0
-            EGGRAFESN.Text = F_cIdPel
+                EPO.Text = SQLpELATES.Rows(f_sqlDT)("EPO")
+                kod.Text = SQLpELATES.Rows(f_sqlDT)("kod")
+                F_cIdPel = SQLpELATES.Rows(f_sqlDT)("ID")  'f_sqlDT = 0
+                EGGRAFESN.Text = F_cIdPel
+
+
+            Catch ex As Exception
+
+            End Try
+
 
         Else
             f_sqlDT = 0
@@ -491,6 +522,25 @@ Public Class Form1
     Private Sub SaveSynedr_Click(sender As Object, e As EventArgs) Handles saveSynedr.Click
         Dim cIDTH As String = Split(ComboTher.Text, ";")(1)
         Dim cDGN = F_CIdDiagn
+
+        Dim Chme As String = Format(DateTimePicker1.Value, "MM/dd/yyyy")
+        Dim CAPO As String = Format(APO.Value, "MM/dd/yyyy")
+        Dim CEOS As String = Format(EOS.Value, "MM/dd/yyyy")
+
+
+
+        Dim sqlt1 As New DataTable
+        ExecuteSQLQuery("select count(*) from PERIODOI WHERE '" + Chme + "'>=APO AND '" + Chme + "'<=EOS AND IDGN=" + cDGN, sqlt1)
+        If sqlt1.Rows(0)(0) = 0 Then
+            MsgBox("ΔΕΝ ΕΧΕΙ ΟΡΙΣΤΕΙ ΠΕΡΙΟΔΟΣ ΣΕ ΑΥΤΟ ΤΟ ΔΙΑΤΗΜΑ")
+            Exit Sub
+        End If
+
+
+
+
+
+
         ExecuteSQLQuery("insert into SYNEDRIES (IDTH,IDGN,ORES,HME) VALUES (" + cIDTH + "," + cDGN + ",1,'" + Format(DateTimePicker1.Value, "MM/dd/yyyy HH:mm") + "')")
         '    INSERT INTO [dbo].[SYNEDRIES]
         '   ([ IDGN]
@@ -636,4 +686,96 @@ Public Class Form1
         MsgBox("ΔΙΕΓΡΑΦΗ")
         PAINT_GRID_PERIOD()
     End Sub
+
+    ' Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+
+
+
+
+
+    '  Dim ΒΜ_source As New Bitmap(p1.Image)
+    '  p1.Image = ResizeImage(bm_source)
+
+
+    '   p2.Image = ResizeImage(p1.Image)
+
+
+
+
+
+    'Dim x As Integer = 0
+    'Dim y As Integer = 0
+    'Dim k = 0
+    'Dim l = 0
+    'Dim bm As New Bitmap(p1.Image)
+    'Dim om As New Bitmap(p1.Image.Width, p1.Image.Height)
+    'Dim r, g, b As Byte
+    'Do While x < bm.Width - 1
+    '    y = 0
+    '    l = 0
+    '    Do While y < bm.Height - 1
+    '        r = 255 - bm.GetPixel(x, y).R
+    '        g = 255 - bm.GetPixel(x, y).G
+    '        b = 255 - bm.GetPixel(x, y).B
+    '        om.SetPixel(k, l, Color.FromArgb(r, g, b))
+    '        y += 3
+    '        l += 1
+    '    Loop
+    '    x += 3
+    '    k += 1
+    'Loop
+    'p2.Image = om
+    '  End Sub
+
+    Private Sub P1_Click(sender As Object, e As EventArgs) Handles p1.Click
+        If F_CIdDiagn = Nothing Then
+            Exit Sub
+        End If
+
+        ' OpenFileDialog2.InitialDirectory = "C:\"
+        OpenFileDialog2.Title = "Open a Text File"
+        OpenFileDialog2.Filter = "Text Files|*.JPG"
+
+
+
+
+        '  OpenFileDialog2.Filter = "*.JPG"
+        OpenFileDialog2.ShowDialog()
+
+
+        Dim source As New Bitmap(OpenFileDialog2.FileName) '"C:\image.png")
+        '  Dim target As New Bitmap(Size.Width, Size.Height) ', PixelFormat.Format24bppRgb)
+
+        ' Using graphics As Graphics = Graphics.FromImage(target)
+        '  Graphics.DrawImage(source, New Size(48, 48))
+        '   End Using
+
+
+        p1.Image = ResizeImage(source)
+
+        Dim C As String = "c:\mercvb" + "\images\" + F_CIdDiagn + ".JPG"
+        ExecuteSQLQuery("UPDATE GNOMATEYSI SET EIK='" + C + "' WHERE ID=" + F_CIdDiagn)
+        If My.Computer.FileSystem.FileExists(C) Then
+        Else
+
+            '     If FileSystem.FileExists("c:\Check.txt") Then
+            ' DOYLEYEI OK
+            FileSystem.FileCopy(OpenFileDialog2.FileName, C)
+        End If
+
+
+        p1.ImageLocation = C
+    End Sub
+
+    Public Overloads Shared Function ResizeImage(ByVal InputImage As Image) As Image
+        Return New Bitmap(InputImage, New Size(135, 99))
+    End Function
+
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+        picture.PictureBox1.Image = p1.Image
+        picture.Show()
+
+
+    End Sub
 End Class
+
