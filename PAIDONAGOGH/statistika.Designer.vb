@@ -174,7 +174,7 @@ Partial Class statistika
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(266, 27)
         Me.Button3.TabIndex = 3
-        Me.Button3.Text = " "
+        Me.Button3.Text = "Συνεδρίες ανά Θεραπευτή"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'Button6

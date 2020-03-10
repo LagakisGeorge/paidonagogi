@@ -46,7 +46,7 @@ Public Class statistika
 
 
 
-        SQLqry = "SELECT TOP 100 S.ID,CONVERT(CHAR(10),HME,3) AS [ΗΜΕΡ],ORES AS [ΩΡΕΣ],EPO AS [ΘΕΡΑΠ],C1 AS [ΘΕΡΑΠΕΙΑ],DATEKATAX AS [ΗΜΕΡ.ΚΑΤΑΧ] "
+        SQLqry = "SELECT TOP 500 S.ID,CONVERT(CHAR(10),HME,3) AS [ΗΜΕΡ],ORES AS [ΩΡΕΣ],EPO AS [ΘΕΡΑΠ],C1 AS [ΘΕΡΑΠΕΙΑ],DATEKATAX AS [ΗΜΕΡ.ΚΑΤΑΧ] "
         SQLqry = SQLqry + "  FROM SYNEDRIES S INNER JOIN THERAP T ON S.IDTH=T.ID WHERE " + EN + TH
         SQLqry = SQLqry + "  HME >='" + Format(APO.Value, "MM/dd/yyyy") + "' and HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "' ORDER BY ID DESC "
 
@@ -168,5 +168,85 @@ Public Class statistika
 
 
 
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        'create data adapter
+        Dim da As OleDbDataAdapter ' SqlDataAdapter
+
+        'create dataset
+        Dim ds As DataSet = New DataSet
+
+
+
+        Dim STHLHTOY_ID As Int16 = 0
+        'cnString = gConnect ' "Data Source=localhost\SQLEXPRESS;Integrated Security=True;database=thermo"
+        'Str_Connection = cnString
+
+        Dim SQLqry As String
+        Dim TH As String
+
+        Dim en As String = " ENERGH=1 AND "
+        If Len(tEN.Text) > 0 Then
+            If tEN.Text = "*" Then
+                en = ""
+            Else
+                If tEN.Text = "2" Then
+                    en = " ENERGH=2 AND "
+                End If
+            End If
+
+        End If
+
+
+        If Len(Combother.Text) > 1 Then
+            TH = "  IDTH=" + Split(Combother.Text, ";")(1) + " and "
+        Else
+            TH = ""
+        End If
+
+
+
+        SQLqry = "SELECT IDTH, sum(ORES) AS [ΩΡΕΣ],EPO AS [ΘΕΡΑΠ] "
+        SQLqry = SQLqry + "  FROM SYNEDRIES S INNER JOIN THERAP T ON S.IDTH=T.ID WHERE " + en + TH
+        SQLqry = SQLqry + "  HME >='" + Format(APO.Value, "MM/dd/yyyy") + "' and HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "' group by EPO,IDTH "
+
+
+
+        'conn = New SqlConnection(cnString)
+
+        Dim conn As New OleDbConnection
+        conn.ConnectionString = gConnect
+        conn.Open()
+
+
+
+        Try
+            ' Open connection
+            'conn.Open()
+
+            da = New OleDbDataAdapter(SQLqry, conn)
+
+            'create command builder
+            Dim cb As OleDbCommandBuilder = New OleDbCommandBuilder(da)
+            ds.Clear()
+            'fill dataset
+            da.Fill(ds, "PEL")
+            GridView2.ClearSelection()
+            GridView2.DataSource = ds
+            GridView2.DataMember = "PEL"
+
+            GridView2.Columns(STHLHTOY_ID).Width = 0
+            GridView2.Columns(STHLHTOY_ID).Visible = False
+
+            Dim n As Integer = GridView2.Columns.Count
+            GridView2.Columns(n - 1).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+
+        Catch ex As SqlException
+            MsgBox(ex.ToString)
+        Finally
+            ' Close connection
+            conn.Close()
+        End Try
     End Sub
 End Class
