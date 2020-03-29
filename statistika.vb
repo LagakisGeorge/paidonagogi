@@ -1,5 +1,5 @@
-﻿Imports System.Net.Http
-Imports System.Net.Http.Headers
+﻿'mports System.Net.Http
+'Imports System.Net.Http.Headers
 Imports System.Text
 Imports System.Xml
 Imports System.Data.OleDb
@@ -207,8 +207,21 @@ Public Class statistika
 
 
 
+        Dim idgn As String = ""
+
+        If Len(cIDGN.Text) > 0 Then
+            idgn = "  IDGN=" + cIDGN.Text + " and "
+
+        End If
+
+
+
+
+
+
+
         SQLqry = "SELECT IDTH, sum(ORES) AS [ΩΡΕΣ],EPO AS [ΘΕΡΑΠ] "
-        SQLqry = SQLqry + "  FROM SYNEDRIES S INNER JOIN THERAP T ON S.IDTH=T.ID WHERE " + en + TH
+        SQLqry = SQLqry + "  FROM SYNEDRIES S INNER JOIN THERAP T ON S.IDTH=T.ID WHERE " + en + TH + idgn
         SQLqry = SQLqry + "  HME >='" + Format(APO.Value, "MM/dd/yyyy") + "' and HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "' group by EPO,IDTH "
 
 
