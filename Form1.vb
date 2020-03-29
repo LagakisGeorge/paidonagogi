@@ -23,7 +23,7 @@ Public Class Form1
     Dim ds As DataSet = New DataSet
 
     Dim F_POSA_ISTORIKA As Integer
-    Dim F_TREXON_ISTORIKO As Integer
+    Dim F_TREXON_ISTORIKO As Integer = 0
 
 
 
@@ -262,6 +262,8 @@ Public Class Form1
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles BNext.Click
         TableLayoutGNOMATEYSI.Enabled = False
         f_sqlDT = f_sqlDT + 1
+        next_Istoriko.Visible = False
+
         If f_sqlDT < SQLpELATES.Rows.Count Then
 
             EPO.Text = SQLpELATES.Rows(f_sqlDT)("EPO")
@@ -453,38 +455,51 @@ Public Class Form1
         End If
         ExecuteSQLQuery(" Select * from GNOMATEYSI WHERE ENERGH=" + cEnergh + " AND IDPEL=" + F_cIdPel)
         If sqlDT.Rows.Count > 0 Then
+            If isHistory.Checked = True Then
+                If sqlDT.Rows.Count > 1 Then
+                    F_POSA_ISTORIKA = sqlDT.Rows.Count
+                    next_Istoriko.Visible = True
+                    If F_TREXON_ISTORIKO = 0 Then
+                        next_Istoriko.Text = Str(F_TREXON_ISTORIKO + 1) + "/" + Str(F_POSA_ISTORIKA) + "  /\"
+                    End If
+
+                End If
+                Else
+                next_Istoriko.Visible = False
+            End If
+
             ADEIO = 0
             NEADIAGNOSI.Enabled = False
             NEADIAGNOSI.BackColor = Color.White
             '  DIORTOSI.BackColor = Color.Green
-            KATHGORIA.Text = sqlDT.Rows(0)("KATHGORIA").ToString
-            TITLOSNOSIMATOS.Text = sqlDT.Rows(0)("TITLOSNOSIMATOS").ToString
-            F_CIdDiagn = sqlDT.Rows(0)("ID").ToString
-            KODNOSIMATOS.Text = sqlDT.Rows(0)("KODNOSIMATOS").ToString
-            EIDIK1.Text = sqlDT.Rows(0)("EIDIK1").ToString
-            EIDIK2.Text = sqlDT.Rows(0)("EIDIK2").ToString
-            EIDIK3.Text = sqlDT.Rows(0)("EIDIK3").ToString
-            EIDIK4.Text = sqlDT.Rows(0)("EIDIK4").ToString
+            KATHGORIA.Text = sqlDT.Rows(MrOW)("KATHGORIA").ToString
+            TITLOSNOSIMATOS.Text = sqlDT.Rows(MrOW)("TITLOSNOSIMATOS").ToString
+            F_CIdDiagn = sqlDT.Rows(MrOW)("ID").ToString
+            KODNOSIMATOS.Text = sqlDT.Rows(MrOW)("KODNOSIMATOS").ToString
+            EIDIK1.Text = sqlDT.Rows(MrOW)("EIDIK1").ToString
+            EIDIK2.Text = sqlDT.Rows(MrOW)("EIDIK2").ToString
+            EIDIK3.Text = sqlDT.Rows(MrOW)("EIDIK3").ToString
+            EIDIK4.Text = sqlDT.Rows(MrOW)("EIDIK4").ToString
 
-            LOGH.Text = sqlDT.Rows(0)("LOGH").ToString
-            ERGH.Text = sqlDT.Rows(0)("ERGH").ToString
-            PSIH.Text = sqlDT.Rows(0)("PSIH").ToString
-            EIDH.Text = sqlDT.Rows(0)("EIDH").ToString
-            OIKH.Text = sqlDT.Rows(0)("OIKH").ToString
-            FYSH.Text = sqlDT.Rows(0)("FYSH").ToString
+            LOGH.Text = sqlDT.Rows(MrOW)("LOGH").ToString
+            ERGH.Text = sqlDT.Rows(MrOW)("ERGH").ToString
+            PSIH.Text = sqlDT.Rows(MrOW)("PSIH").ToString
+            EIDH.Text = sqlDT.Rows(MrOW)("EIDH").ToString
+            OIKH.Text = sqlDT.Rows(MrOW)("OIKH").ToString
+            FYSH.Text = sqlDT.Rows(MrOW)("FYSH").ToString
 
-            KOSTOSSYNEDRIAS.Text = sqlDT.Rows(0)("KOSTOSSYNEDRIAS").ToString
+            KOSTOSSYNEDRIAS.Text = sqlDT.Rows(MrOW)("KOSTOSSYNEDRIAS").ToString
 
-            SYNOLKOSTOS.Text = sqlDT.Rows(0)("SYNOLKOSTOS").ToString
+            SYNOLKOSTOS.Text = sqlDT.Rows(MrOW)("SYNOLKOSTOS").ToString
 
 
 
             Dim ALLREADYUPDATED As Integer = 0
             Dim UPD_FROM_PERIODOI As Integer = 0 'UPDATE FROM PERIODOI
-            If IsDBNull(sqlDT.Rows(0)("enarxi")) Then
+            If IsDBNull(sqlDT.Rows(MrOW)("enarxi")) Then
                 UPD_FROM_PERIODOI = 1
             Else
-                If Math.Abs(DateDiff("d", sqlDT.Rows(0)("LHXH"), sqlDT.Rows(0)("enarxi"))) < 10 Then
+                If Math.Abs(DateDiff("d", sqlDT.Rows(MrOW)("LHXH"), sqlDT.Rows(MrOW)("enarxi"))) < 10 Then
                     UPD_FROM_PERIODOI = 1
                 End If
             End If
@@ -516,22 +531,22 @@ Public Class Form1
 
             If ALLREADYUPDATED = 0 Then
 
-                If IsDBNull(sqlDT.Rows(0)("enarxi")) Then
+                If IsDBNull(sqlDT.Rows(MrOW)("enarxi")) Then
                     ENARXI.CustomFormat = " "  'An empty SPACE
                     ENARXI.Format = DateTimePickerFormat.Custom '.CustomFormat
                 Else
                     ENARXI.CustomFormat = "dd/MM/yyyy" '  hh:mm:ss"
                     ENARXI.Format = DateTimePickerFormat.Custom
-                    ENARXI.Value = sqlDT.Rows(0)("enarxi")
+                    ENARXI.Value = sqlDT.Rows(MrOW)("enarxi")
                 End If
 
-                If IsDBNull(sqlDT.Rows(0)("LHXH")) Then
+                If IsDBNull(sqlDT.Rows(MrOW)("LHXH")) Then
                     LHXH.CustomFormat = " "  'An empty SPACE
                     LHXH.Format = DateTimePickerFormat.Custom '.CustomFormat
                 Else
                     LHXH.CustomFormat = "dd/MM/yyyy" '  hh:mm:ss"
                     LHXH.Format = DateTimePickerFormat.Custom
-                    LHXH.Value = sqlDT.Rows(0)("LHXH")
+                    LHXH.Value = sqlDT.Rows(MrOW)("LHXH")
                 End If
 
             End If
@@ -545,15 +560,15 @@ Public Class Form1
             'End If
 
 
-            If IsDBNull(sqlDT.Rows(0)("EIK")) Then
+            If IsDBNull(sqlDT.Rows(MrOW)("EIK")) Then
                 F_ImageFile = ""
 
             Else
-                F_ImageFile = sqlDT.Rows(0)("EIK").ToString
+                F_ImageFile = sqlDT.Rows(MrOW)("EIK").ToString
 
             End If
 
-            If Len(sqlDT.Rows(0)("EIK").ToString) > 0 Then
+            If Len(sqlDT.Rows(MrOW)("EIK").ToString) > 0 Then
                 If My.Computer.FileSystem.FileExists(F_ImageFile) Then
                     Dim source As New Bitmap(F_ImageFile)
                     P1.Image = ResizeImage(source)
@@ -619,6 +634,7 @@ Public Class Form1
     Private Sub BPREV_Click(sender As Object, e As EventArgs) Handles bPrev.Click
         TableLayoutGNOMATEYSI.Enabled = False
         f_sqlDT = f_sqlDT - 1
+        next_Istoriko.Visible = False
         If f_sqlDT >= 0 Then 'SQLpELATES.Rows.Count Then
             Try
 
@@ -1204,6 +1220,51 @@ Public Class Form1
     Private Sub ToHistory_Click(sender As Object, e As EventArgs) Handles ToHistory.Click
         ExecuteSQLQuery("update GNOMATEYSI SET ENERGH=3 WHERE ID=" + F_CIdDiagn)
         MsgBox("OK")
+
+    End Sub
+
+    Private Sub Next_Istoriko_Click(sender As Object, e As EventArgs) Handles next_Istoriko.Click
+
+        If InStr(next_Istoriko.Text, "/\") > 0 Then
+            F_TREXON_ISTORIKO = F_TREXON_ISTORIKO + 1
+            next_Istoriko.Text = Str(F_TREXON_ISTORIKO + 1) + "/" + Str(F_POSA_ISTORIKA) + "  /\"
+        Else
+            F_TREXON_ISTORIKO = F_TREXON_ISTORIKO - 1
+            next_Istoriko.Text = Str(F_TREXON_ISTORIKO + 1) + "/" + Str(F_POSA_ISTORIKA) + "  \/"
+        End If
+
+        If F_TREXON_ISTORIKO >= F_POSA_ISTORIKA - 1 Then
+            F_TREXON_ISTORIKO = F_POSA_ISTORIKA - 1
+            next_Istoriko.Text = Str(F_TREXON_ISTORIKO + 1) + "/" + Str(F_POSA_ISTORIKA) + "  \/"
+
+        End If
+
+        If F_TREXON_ISTORIKO < 0 Then
+            F_TREXON_ISTORIKO = 0
+            next_Istoriko.Text = Str(F_TREXON_ISTORIKO + 1) + "/" + Str(F_POSA_ISTORIKA) + "  /\"
+
+        End If
+
+
+
+
+        ' SHOW_GNOMATEYSI(F_TREXON_ISTORIKO)
+
+        Dim ADEIO As Integer = SHOW_GNOMATEYSI(F_TREXON_ISTORIKO)
+        If ADEIO = 0 Then
+            GridView1.Visible = True
+            GridView2.Visible = True
+            PAINT_GRID_PERIOD()
+            PAINT_GRID_SYNEDRIES()
+        Else
+            GridView1.Visible = False
+            GridView2.Visible = False
+
+        End If
+
+
+
+
 
     End Sub
 End Class
