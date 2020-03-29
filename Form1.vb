@@ -22,7 +22,8 @@ Public Class Form1
     'create dataset
     Dim ds As DataSet = New DataSet
 
-
+    Dim F_POSA_ISTORIKA As Integer
+    Dim F_TREXON_ISTORIKO As Integer
 
 
 
@@ -273,17 +274,24 @@ Public Class Form1
 
 
         End If
-        Dim ADEIO As Integer = SHOW_GNOMATEYSI()
+        Dim ADEIO As Integer = SHOW_GNOMATEYSI(0)
         If ADEIO = 0 Then
+            GridView1.Visible = True
+            GridView2.Visible = True
             PAINT_GRID_PERIOD()
             PAINT_GRID_SYNEDRIES()
+        Else
+            GridView1.Visible = False
+            GridView2.Visible = False
+
         End If
 
     End Sub
 
     Private Sub NEADIAGNOSI_CLICK(sender As Object, e As EventArgs) Handles NEADIAGNOSI.Click
         TableLayoutGNOMATEYSI.Enabled = True
-
+        GridView1.Visible = True
+        GridView2.Visible = True
 
         Dim SQLDT2 As New DataTable
         Dim MKOD, C As String
@@ -387,7 +395,8 @@ Public Class Form1
         If Len(EPO.Text) = 0 Then
             Exit Sub
         End If
-
+        GridView1.Visible = True
+        GridView2.Visible = True
 
         bPrev.Enabled = False
         BNext.Enabled = False
@@ -396,7 +405,7 @@ Public Class Form1
 
         '  DIORTOSI.Visible = True
 
-        If SHOW_GNOMATEYSI() = 1 Then ' ADEIO
+        If SHOW_GNOMATEYSI(0) = 1 Then ' ADEIO
             NEADIAGNOSI.Visible = True
             SAVEDIAGN.Enabled = False
             SAVEDIAGN.BackColor = Color.Gray
@@ -436,9 +445,13 @@ Public Class Form1
 
 
     End Sub
-    Function SHOW_GNOMATEYSI() As Integer
+    Function SHOW_GNOMATEYSI(MrOW As Integer) As Integer
         Dim ADEIO As Integer
-        ExecuteSQLQuery(" Select * from GNOMATEYSI WHERE ENERGH=1 AND IDPEL=" + F_cIdPel)
+        Dim cEnergh As String = "1"
+        If isHistory.Checked = True Then
+            cEnergh = "3"
+        End If
+        ExecuteSQLQuery(" Select * from GNOMATEYSI WHERE ENERGH=" + cEnergh + " AND IDPEL=" + F_cIdPel)
         If sqlDT.Rows.Count > 0 Then
             ADEIO = 0
             NEADIAGNOSI.Enabled = False
@@ -533,12 +546,12 @@ Public Class Form1
 
 
             If IsDBNull(sqlDT.Rows(0)("EIK")) Then
-                    F_ImageFile = ""
+                F_ImageFile = ""
 
-                Else
-                    F_ImageFile = sqlDT.Rows(0)("EIK").ToString
+            Else
+                F_ImageFile = sqlDT.Rows(0)("EIK").ToString
 
-                End If
+            End If
 
             If Len(sqlDT.Rows(0)("EIK").ToString) > 0 Then
                 If My.Computer.FileSystem.FileExists(F_ImageFile) Then
@@ -551,8 +564,8 @@ Public Class Form1
 
 
 
-            Else
-                ADEIO = 1
+        Else
+            ADEIO = 1
             NEADIAGNOSI.Enabled = True
             NEADIAGNOSI.BackColor = Color.Green
             ' DIORTOSI.Enabled = False
@@ -625,10 +638,15 @@ Public Class Form1
             f_sqlDT = 0
 
         End If
-        Dim ADEIO As Integer = SHOW_GNOMATEYSI()
+        Dim ADEIO As Integer = SHOW_GNOMATEYSI(0)
         If ADEIO = 0 Then
+            GridView1.Visible = True
+            GridView2.Visible = True
             PAINT_GRID_PERIOD()
             PAINT_GRID_SYNEDRIES()
+        Else
+            GridView1.Visible = False
+            GridView2.Visible = False
         End If
 
     End Sub
@@ -1127,10 +1145,15 @@ Public Class Form1
             SAVEDIAGN.Enabled = False
             ' BindingNavigator.BindingNavigatorPositionItem
             ' BindingNavigatorPositionItem.v
-            Dim ADEIO As Integer = SHOW_GNOMATEYSI()
+            Dim ADEIO As Integer = SHOW_GNOMATEYSI(0)
             If ADEIO = 0 Then
+                GridView1.Visible = True
+                GridView2.Visible = True
                 PAINT_GRID_PERIOD()
                 PAINT_GRID_SYNEDRIES()
+            Else
+                GridView1.Visible = False
+                GridView2.Visible = False
             End If
 
         End If
@@ -1175,6 +1198,12 @@ Public Class Form1
 
         End If
 
+
+    End Sub
+
+    Private Sub ToHistory_Click(sender As Object, e As EventArgs) Handles ToHistory.Click
+        ExecuteSQLQuery("update GNOMATEYSI SET ENERGH=3 WHERE ID=" + F_CIdDiagn)
+        MsgBox("OK")
 
     End Sub
 End Class

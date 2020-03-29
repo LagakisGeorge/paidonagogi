@@ -28,13 +28,11 @@ Partial Class Form1
         Me.Label2 = New System.Windows.Forms.Label()
         Me.kod = New System.Windows.Forms.TextBox()
         Me.EPO = New System.Windows.Forms.TextBox()
-        Me.ONOMA = New System.Windows.Forms.TextBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.NEADIAGNOSI = New System.Windows.Forms.Button()
         Me.EPILOGH = New System.Windows.Forms.Button()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.EGGRAFESN = New System.Windows.Forms.Label()
@@ -123,6 +121,8 @@ Partial Class Form1
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.OpenFileDialog2 = New System.Windows.Forms.OpenFileDialog()
         Me.eponymia = New System.Windows.Forms.Label()
+        Me.isHistory = New System.Windows.Forms.CheckBox()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutGNOMATEYSI.SuspendLayout()
@@ -156,19 +156,19 @@ Partial Class Form1
         Me.TableLayoutPanel1.Controls.Add(Me.Label2, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.kod, 4, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.EPO, 4, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.ONOMA, 4, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.TextBox1, 1, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.Label6, 1, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.TextBox5, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.NEADIAGNOSI, 0, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.EPILOGH, 1, 3)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label4, 2, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.Label5, 2, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.Label3, 2, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.EGGRAFESN, 4, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.isHistory, 4, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.BNext, 3, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.bPrev, 2, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.bAkyr, 0, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.Button6, 2, 2)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 4
@@ -216,14 +216,6 @@ Partial Class Form1
         Me.EPO.Name = "EPO"
         Me.EPO.Size = New System.Drawing.Size(277, 20)
         Me.EPO.TabIndex = 4
-        '
-        'ONOMA
-        '
-        Me.ONOMA.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ONOMA.Location = New System.Drawing.Point(532, 95)
-        Me.ONOMA.Name = "ONOMA"
-        Me.ONOMA.Size = New System.Drawing.Size(277, 20)
-        Me.ONOMA.TabIndex = 2
         '
         'TextBox1
         '
@@ -275,17 +267,6 @@ Partial Class Form1
         Me.EPILOGH.TabIndex = 17
         Me.EPILOGH.Text = "Επιλογή Μαθητή"
         Me.EPILOGH.UseVisualStyleBackColor = True
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.TableLayoutPanel1.SetColumnSpan(Me.Label4, 2)
-        Me.Label4.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Label4.Location = New System.Drawing.Point(440, 105)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(86, 13)
-        Me.Label4.TabIndex = 7
-        Me.Label4.Text = "ΟΝΟΜΑ"
         '
         'Label5
         '
@@ -1203,6 +1184,29 @@ Partial Class Form1
         Me.eponymia.Size = New System.Drawing.Size(0, 20)
         Me.eponymia.TabIndex = 4
         '
+        'isHistory
+        '
+        Me.isHistory.AutoSize = True
+        Me.isHistory.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.isHistory.Location = New System.Drawing.Point(532, 75)
+        Me.isHistory.Name = "isHistory"
+        Me.isHistory.Size = New System.Drawing.Size(277, 40)
+        Me.isHistory.TabIndex = 11
+        Me.isHistory.Text = "Ιστορικό Αρχείο"
+        Me.isHistory.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.TableLayoutPanel1.SetColumnSpan(Me.Button6, 2)
+        Me.Button6.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Button6.Location = New System.Drawing.Point(440, 90)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(86, 25)
+        Me.Button6.TabIndex = 20
+        Me.Button6.Text = "/\"
+        Me.Button6.UseVisualStyleBackColor = True
+        Me.Button6.Visible = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1246,13 +1250,11 @@ Partial Class Form1
     Friend WithEvents TableLayoutPanel5 As TableLayoutPanel
     Friend WithEvents Label1 As Label
     Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents ONOMA As TextBox
     Friend WithEvents kod As TextBox
     Friend WithEvents EPO As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents Label4 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents TextBox5 As TextBox
     Friend WithEvents NEADIAGNOSI As Button
@@ -1337,4 +1339,6 @@ Partial Class Form1
     Friend WithEvents Label34 As Label
     Friend WithEvents Label33 As Label
     Friend WithEvents Button5 As Button
+    Friend WithEvents isHistory As CheckBox
+    Friend WithEvents Button6 As Button
 End Class
