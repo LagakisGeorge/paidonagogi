@@ -23,42 +23,29 @@ Partial Class PICTURE
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.FIMAGEFILE = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(-1, 0)
+        Me.PictureBox1.Location = New System.Drawing.Point(61, 35)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(1062, 543)
+        Me.PictureBox1.Size = New System.Drawing.Size(100, 50)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
-        '
-        'FIMAGEFILE
-        '
-        Me.FIMAGEFILE.AutoSize = True
-        Me.FIMAGEFILE.Location = New System.Drawing.Point(975, 35)
-        Me.FIMAGEFILE.Name = "FIMAGEFILE"
-        Me.FIMAGEFILE.Size = New System.Drawing.Size(0, 13)
-        Me.FIMAGEFILE.TabIndex = 1
-        Me.FIMAGEFILE.Visible = False
         '
         'PICTURE
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1065, 548)
-        Me.Controls.Add(Me.FIMAGEFILE)
+        Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.PictureBox1)
         Me.Name = "PICTURE"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        Me.Text = "PICTURE"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents FIMAGEFILE As Label
 End Class
