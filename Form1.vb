@@ -240,7 +240,7 @@ Public Class Form1
                 ' SQL = SQL + " AND '" + Format(sqldt3.Rows(K)("HME"), "MM/dd/yyyy") + "'>=DATEADD(D,-1,EOS)  AND '" + Format(sqldt3.Rows(K)("HME"), "MM/dd/yyyy") + "'<= DATEADD(D,27,EOS) "
                 Dim sqldt5 As New DataTable
                 ExecuteSQLQuery(SQL, sqldt5)
-                ' If sqldt5.Rows.Count > 0 Then
+                ' If sqldt5.Rows.Count   > 0 Then
                 ExecuteSQLQuery("update TIM SET SKOPOS2='1' WHERE ID_NUM=" + sqldt3.Rows(K)("ID_NUM").ToString)
 
 
@@ -540,11 +540,14 @@ Public Class Form1
 
                 End If
 
-                If Len(sqlDT.Rows(0)("EIK").ToString) > 0 Then
+            If Len(sqlDT.Rows(0)("EIK").ToString) > 0 Then
+                If My.Computer.FileSystem.FileExists(F_ImageFile) Then
                     Dim source As New Bitmap(F_ImageFile)
                     P1.Image = ResizeImage(source)
-
                 End If
+
+
+            End If
 
 
 
@@ -1164,7 +1167,7 @@ Public Class Form1
         If Len(GridView2.CurrentRow.Cells("ATIM").Value.ToString) = 0 Then
 
             ExecuteSQLQuery("update  PERIODOI set AJIAAPOD=0,ATIM='ΑΠΟΥΣΙΑ'  WHERE ID=" + mk, FOFO)
-            MsgBox("ΟΚ")
+            MsgBox("ΟΚ-ΑΠΕΝΕΡΓΟΠΙΟΗΘΗΚΕ")
             PAINT_GRID_PERIOD()
         Else
 
