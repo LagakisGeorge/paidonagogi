@@ -168,4 +168,18 @@ ALTER TABLE PERIODOI ADD BLOGOT NVARCHAR(20) NULL
 ******************************************************   "CREATE_TABLES_ALTER_TABLES:"
 
 
+GO		
+		
+CREATE TABLE [dbo].[THERTIMES](		
+	[ONOMA] [nvarchar](50) NULL,	
+	[KOD] [nvarchar](10) NULL,	
+	[TIMH] [real] NULL,
+        [ID] [int] IDENTITY(1,1) NOT NULL
+) ON [PRIMARY]		
+GO		
 
+insert into THERTIMES(ONOMA,KOD,TIMH) VALUES ('еяцохеяапеиа','ERGH',15)
+insert into THERTIMES(ONOMA,KOD,TIMH) VALUES ('хея.сулпеяижояас','PSIH',15)
+insert into THERTIMES(ONOMA,KOD,TIMH) VALUES ('еид.диапаидацыцгсг','EIDH',1.23)
+insert into THERTIMES(ONOMA,KOD,TIMH) VALUES ('оийоц.ьувохеяапеиа','OIKH',15)
+insert into THERTIMES(ONOMA,KOD,TIMH) VALUES ('коцохеяапеиа','LOGH',15)

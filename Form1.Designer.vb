@@ -123,6 +123,9 @@ Partial Class Form1
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.OpenFileDialog2 = New System.Windows.Forms.OpenFileDialog()
         Me.eponymia = New System.Windows.Forms.Label()
+        Me.epipleon = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.CALC = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutGNOMATEYSI.SuspendLayout()
@@ -151,7 +154,7 @@ Partial Class Form1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.69531!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 284.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 285.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.Label1, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Label2, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.kod, 4, 0)
@@ -204,17 +207,17 @@ Partial Class Form1
         'kod
         '
         Me.kod.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.kod.Location = New System.Drawing.Point(530, 15)
+        Me.kod.Location = New System.Drawing.Point(529, 15)
         Me.kod.Name = "kod"
-        Me.kod.Size = New System.Drawing.Size(279, 20)
+        Me.kod.Size = New System.Drawing.Size(280, 20)
         Me.kod.TabIndex = 3
         '
         'EPO
         '
         Me.EPO.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.EPO.Location = New System.Drawing.Point(530, 49)
+        Me.EPO.Location = New System.Drawing.Point(529, 49)
         Me.EPO.Name = "EPO"
-        Me.EPO.Size = New System.Drawing.Size(279, 20)
+        Me.EPO.Size = New System.Drawing.Size(280, 20)
         Me.EPO.TabIndex = 4
         '
         'TextBox1
@@ -223,7 +226,7 @@ Partial Class Form1
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
         Me.TextBox1.Location = New System.Drawing.Point(165, 93)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(267, 22)
+        Me.TextBox1.Size = New System.Drawing.Size(266, 22)
         Me.TextBox1.TabIndex = 1
         '
         'Label6
@@ -232,7 +235,7 @@ Partial Class Form1
         Me.Label6.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Label6.Location = New System.Drawing.Point(165, 59)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(267, 13)
+        Me.Label6.Size = New System.Drawing.Size(266, 13)
         Me.Label6.TabIndex = 9
         Me.Label6.Text = "ΕΠΩΝΥΜΟ ή ΤΗΛΕΦΩΝΟ"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -263,7 +266,7 @@ Partial Class Form1
         Me.EPILOGH.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.EPILOGH.Location = New System.Drawing.Point(165, 121)
         Me.EPILOGH.Name = "EPILOGH"
-        Me.EPILOGH.Size = New System.Drawing.Size(267, 28)
+        Me.EPILOGH.Size = New System.Drawing.Size(266, 28)
         Me.EPILOGH.TabIndex = 17
         Me.EPILOGH.Text = "Επιλογή Μαθητή"
         Me.EPILOGH.UseVisualStyleBackColor = True
@@ -273,7 +276,7 @@ Partial Class Form1
         Me.Label5.AutoSize = True
         Me.TableLayoutPanel1.SetColumnSpan(Me.Label5, 2)
         Me.Label5.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Label5.Location = New System.Drawing.Point(438, 59)
+        Me.Label5.Location = New System.Drawing.Point(437, 59)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(86, 13)
         Me.Label5.TabIndex = 8
@@ -284,7 +287,7 @@ Partial Class Form1
         Me.Label3.AutoSize = True
         Me.TableLayoutPanel1.SetColumnSpan(Me.Label3, 2)
         Me.Label3.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Label3.Location = New System.Drawing.Point(438, 25)
+        Me.Label3.Location = New System.Drawing.Point(437, 25)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(86, 13)
         Me.Label3.TabIndex = 6
@@ -294,9 +297,9 @@ Partial Class Form1
         '
         Me.EGGRAFESN.AutoSize = True
         Me.EGGRAFESN.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.EGGRAFESN.Location = New System.Drawing.Point(530, 139)
+        Me.EGGRAFESN.Location = New System.Drawing.Point(529, 139)
         Me.EGGRAFESN.Name = "EGGRAFESN"
-        Me.EGGRAFESN.Size = New System.Drawing.Size(279, 13)
+        Me.EGGRAFESN.Size = New System.Drawing.Size(280, 13)
         Me.EGGRAFESN.TabIndex = 15
         Me.EGGRAFESN.Text = ".."
         Me.EGGRAFESN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -305,9 +308,9 @@ Partial Class Form1
         '
         Me.isHistory.AutoSize = True
         Me.isHistory.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.isHistory.Location = New System.Drawing.Point(530, 75)
+        Me.isHistory.Location = New System.Drawing.Point(529, 75)
         Me.isHistory.Name = "isHistory"
-        Me.isHistory.Size = New System.Drawing.Size(279, 40)
+        Me.isHistory.Size = New System.Drawing.Size(280, 40)
         Me.isHistory.TabIndex = 11
         Me.isHistory.Text = "Ιστορικό Αρχείο"
         Me.isHistory.UseVisualStyleBackColor = True
@@ -316,7 +319,7 @@ Partial Class Form1
         '
         Me.BNext.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BNext.Enabled = False
-        Me.BNext.Location = New System.Drawing.Point(484, 121)
+        Me.BNext.Location = New System.Drawing.Point(483, 121)
         Me.BNext.Name = "BNext"
         Me.BNext.Size = New System.Drawing.Size(40, 28)
         Me.BNext.TabIndex = 12
@@ -327,7 +330,7 @@ Partial Class Form1
         '
         Me.bPrev.Dock = System.Windows.Forms.DockStyle.Fill
         Me.bPrev.Enabled = False
-        Me.bPrev.Location = New System.Drawing.Point(438, 121)
+        Me.bPrev.Location = New System.Drawing.Point(437, 121)
         Me.bPrev.Name = "bPrev"
         Me.bPrev.Size = New System.Drawing.Size(40, 28)
         Me.bPrev.TabIndex = 18
@@ -347,7 +350,7 @@ Partial Class Form1
         '
         Me.TableLayoutPanel1.SetColumnSpan(Me.next_Istoriko, 2)
         Me.next_Istoriko.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.next_Istoriko.Location = New System.Drawing.Point(438, 90)
+        Me.next_Istoriko.Location = New System.Drawing.Point(437, 90)
         Me.next_Istoriko.Name = "next_Istoriko"
         Me.next_Istoriko.Size = New System.Drawing.Size(86, 25)
         Me.next_Istoriko.TabIndex = 20
@@ -397,7 +400,6 @@ Partial Class Form1
         Me.TableLayoutGNOMATEYSI.Controls.Add(Me.PSIH, 1, 12)
         Me.TableLayoutGNOMATEYSI.Controls.Add(Me.EIDH, 1, 13)
         Me.TableLayoutGNOMATEYSI.Controls.Add(Me.OIKH, 1, 14)
-        Me.TableLayoutGNOMATEYSI.Controls.Add(Me.KOSTOSSYNEDRIAS, 1, 16)
         Me.TableLayoutGNOMATEYSI.Controls.Add(Me.SYNOLKOSTOS, 1, 17)
         Me.TableLayoutGNOMATEYSI.Controls.Add(Me.FYSH, 1, 15)
         Me.TableLayoutGNOMATEYSI.Controls.Add(Me.KATHGORIA, 1, 0)
@@ -413,6 +415,10 @@ Partial Class Form1
         Me.TableLayoutGNOMATEYSI.Controls.Add(Me.ToHistory, 3, 17)
         Me.TableLayoutGNOMATEYSI.Controls.Add(Me.SAVEDIAGN, 2, 17)
         Me.TableLayoutGNOMATEYSI.Controls.Add(Me.Label30, 0, 17)
+        Me.TableLayoutGNOMATEYSI.Controls.Add(Me.epipleon, 2, 15)
+        Me.TableLayoutGNOMATEYSI.Controls.Add(Me.Button6, 3, 15)
+        Me.TableLayoutGNOMATEYSI.Controls.Add(Me.KOSTOSSYNEDRIAS, 3, 9)
+        Me.TableLayoutGNOMATEYSI.Controls.Add(Me.CALC, 1, 16)
         Me.TableLayoutGNOMATEYSI.Location = New System.Drawing.Point(13, 194)
         Me.TableLayoutGNOMATEYSI.Name = "TableLayoutGNOMATEYSI"
         Me.TableLayoutGNOMATEYSI.RowCount = 18
@@ -687,10 +693,9 @@ Partial Class Form1
         '
         'KOSTOSSYNEDRIAS
         '
-        Me.KOSTOSSYNEDRIAS.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.KOSTOSSYNEDRIAS.Location = New System.Drawing.Point(173, 403)
+        Me.KOSTOSSYNEDRIAS.Location = New System.Drawing.Point(606, 228)
         Me.KOSTOSSYNEDRIAS.Name = "KOSTOSSYNEDRIAS"
-        Me.KOSTOSSYNEDRIAS.Size = New System.Drawing.Size(206, 20)
+        Me.KOSTOSSYNEDRIAS.Size = New System.Drawing.Size(199, 20)
         Me.KOSTOSSYNEDRIAS.TabIndex = 45
         '
         'SYNOLKOSTOS
@@ -749,7 +754,7 @@ Partial Class Form1
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(164, 25)
         Me.Label24.TabIndex = 30
-        Me.Label24.Text = "ΚΟΣΤΟΣ/ΣΥΝΕΔΡΙΑ"
+        Me.Label24.Text = "ΥΠΟΛΟΓΙΣΜΟΣ=>"
         Me.Label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'ENARXI
@@ -814,10 +819,11 @@ Partial Class Form1
         '
         'SAVEDIAGN
         '
+        Me.SAVEDIAGN.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SAVEDIAGN.Enabled = False
         Me.SAVEDIAGN.Location = New System.Drawing.Point(385, 428)
         Me.SAVEDIAGN.Name = "SAVEDIAGN"
-        Me.SAVEDIAGN.Size = New System.Drawing.Size(164, 32)
+        Me.SAVEDIAGN.Size = New System.Drawing.Size(215, 32)
         Me.SAVEDIAGN.TabIndex = 50
         Me.SAVEDIAGN.Text = "Καταχώρηση"
         Me.SAVEDIAGN.UseVisualStyleBackColor = True
@@ -1207,6 +1213,35 @@ Partial Class Form1
         Me.eponymia.Size = New System.Drawing.Size(0, 20)
         Me.eponymia.TabIndex = 4
         '
+        'epipleon
+        '
+        Me.epipleon.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.epipleon.Location = New System.Drawing.Point(385, 378)
+        Me.epipleon.Name = "epipleon"
+        Me.epipleon.Size = New System.Drawing.Size(215, 19)
+        Me.epipleon.TabIndex = 58
+        Me.epipleon.Text = "Επιπλέον Γνωμάτευση"
+        Me.epipleon.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Button6.Location = New System.Drawing.Point(606, 378)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(199, 19)
+        Me.Button6.TabIndex = 59
+        Me.Button6.Text = "ΤΙΜΕΣ"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'CALC
+        '
+        Me.CALC.Location = New System.Drawing.Point(173, 403)
+        Me.CALC.Name = "CALC"
+        Me.CALC.Size = New System.Drawing.Size(206, 19)
+        Me.CALC.TabIndex = 60
+        Me.CALC.Text = "ΥΠΟΛΟΓΙΣΜΟΣ"
+        Me.CALC.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1341,4 +1376,7 @@ Partial Class Form1
     Friend WithEvents Button5 As Button
     Friend WithEvents isHistory As CheckBox
     Friend WithEvents next_Istoriko As Button
+    Friend WithEvents epipleon As Button
+    Friend WithEvents Button6 As Button
+    Friend WithEvents CALC As Button
 End Class

@@ -39,6 +39,7 @@ Partial Class Form2
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.GridView1 = New System.Windows.Forms.DataGridView()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.QUER = New System.Windows.Forms.Label()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingNavigator1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BindingNavigator1.SuspendLayout()
@@ -155,11 +156,20 @@ Partial Class Form2
         Me.Button2.Text = "Εξοδος"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'QUER
+        '
+        Me.QUER.AutoSize = True
+        Me.QUER.Location = New System.Drawing.Point(9, 425)
+        Me.QUER.Name = "QUER"
+        Me.QUER.Size = New System.Drawing.Size(0, 13)
+        Me.QUER.TabIndex = 5
+        '
         'Form2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(792, 525)
+        Me.Controls.Add(Me.QUER)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.GridView1)
         Me.Controls.Add(Me.BindingNavigator1)
@@ -189,4 +199,5 @@ Partial Class Form2
     Friend WithEvents ToolStripButton1 As ToolStripButton
     Friend WithEvents GridView1 As DataGridView
     Friend WithEvents Button2 As Button
+    Friend WithEvents QUER As Label
 End Class

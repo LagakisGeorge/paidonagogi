@@ -43,7 +43,7 @@ Public Class Form2
         cnString = gConnect ' "Data Source=localhost\SQLEXPRESS;Integrated Security=True;database=thermo"
         'Str_Connection = cnString
         Dim SQLqry
-        SQLqry = "SELECT TOP 20 EPO,ID,LOGCH,ERGCH,EIDCH,OIKCH FROM THERAP " ' ORDER BY HME "
+        SQLqry = QUER.Text  '"SELECT TOP 20 EPO,ID,LOGCH,ERGCH,EIDCH,OIKCH FROM THERAP " ' ORDER BY HME "
         'conn = New SqlConnection(cnString)
 
         Dim conn As New OleDbConnection

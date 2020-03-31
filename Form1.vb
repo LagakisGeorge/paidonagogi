@@ -263,7 +263,7 @@ Public Class Form1
         TableLayoutGNOMATEYSI.Enabled = False
         f_sqlDT = f_sqlDT + 1
         next_Istoriko.Visible = False
-
+        F_TREXON_ISTORIKO = 0
         If f_sqlDT < SQLpELATES.Rows.Count Then
 
             EPO.Text = SQLpELATES.Rows(f_sqlDT)("EPO")
@@ -407,13 +407,14 @@ Public Class Form1
 
         '  DIORTOSI.Visible = True
 
-        If SHOW_GNOMATEYSI(0) = 1 Then ' ADEIO
+        If SHOW_GNOMATEYSI(F_TREXON_ISTORIKO) = 1 Then ' ADEIO
             NEADIAGNOSI.Visible = True
             SAVEDIAGN.Enabled = False
             SAVEDIAGN.BackColor = Color.Gray
 
         Else
             TableLayoutGNOMATEYSI.Enabled = True
+
 
             SAVEDIAGN.Enabled = True
             SAVEDIAGN.BackColor = Color.Green
@@ -431,6 +432,9 @@ Public Class Form1
         PAINT_GRID_PERIOD()
         DateTimePicker1.Format = DateTimePickerFormat.Custom
         DateTimePicker1.CustomFormat = "dd/MM/yyyy  hh:mm "
+
+
+
 
 
         ' Dim bm_source As New Bitmap(p1.Image)
@@ -453,20 +457,25 @@ Public Class Form1
         If isHistory.Checked = True Then
             cEnergh = "3"
         End If
-        ExecuteSQLQuery(" Select * from GNOMATEYSI WHERE ENERGH=" + cEnergh + " AND IDPEL=" + F_cIdPel)
+        Dim M_ORDER As String = ""
+        If MrOW = -1 Then ' ΟΤΑΝ ΠΡΟΣΘΕΤΩ 2Η ΓΝΩΜΑΤΕΥΣΗ ΣΤΟΝ ΙΔΙΟ ΜΑΘΗΤΗ
+            M_ORDER = " ORDER BY ID DESC "
+            MrOW = 0
+        End If
+        ExecuteSQLQuery(" Select * from GNOMATEYSI WHERE ENERGH=" + cEnergh + " AND IDPEL=" + F_cIdPel + M_ORDER)
         If sqlDT.Rows.Count > 0 Then
-            If isHistory.Checked = True Then
-                If sqlDT.Rows.Count > 1 Then
-                    F_POSA_ISTORIKA = sqlDT.Rows.Count
-                    next_Istoriko.Visible = True
-                    If F_TREXON_ISTORIKO = 0 Then
-                        next_Istoriko.Text = Str(F_TREXON_ISTORIKO + 1) + "/" + Str(F_POSA_ISTORIKA) + "  /\"
-                    End If
-
+            'If isHistory.Checked = True Then
+            If sqlDT.Rows.Count > 1 Then
+                F_POSA_ISTORIKA = sqlDT.Rows.Count
+                next_Istoriko.Visible = True
+                If F_TREXON_ISTORIKO = 0 Then
+                    next_Istoriko.Text = Str(F_TREXON_ISTORIKO + 1) + "/" + Str(F_POSA_ISTORIKA) + "  /\"
                 End If
-                Else
-                next_Istoriko.Visible = False
+
             End If
+            'Else
+            '   next_Istoriko.Visible = False
+            'End If
 
             ADEIO = 0
             NEADIAGNOSI.Enabled = False
@@ -635,6 +644,7 @@ Public Class Form1
         TableLayoutGNOMATEYSI.Enabled = False
         f_sqlDT = f_sqlDT - 1
         next_Istoriko.Visible = False
+        F_TREXON_ISTORIKO = 0
         If f_sqlDT >= 0 Then 'SQLpELATES.Rows.Count Then
             Try
 
@@ -668,6 +678,7 @@ Public Class Form1
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Form2.QUER.Text = "SELECT TOP 20 EPO,ID,LOGCH,ERGCH,EIDCH,OIKCH FROM THERAP " ' ORDER BY HME "
         Form2.Show()
 
     End Sub
@@ -1270,6 +1281,59 @@ Public Class Form1
 
     Private Sub Label16_Click(sender As Object, e As EventArgs) Handles Label16.Click
 
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles epipleon.Click
+        TableLayoutGNOMATEYSI.Enabled = True
+        GridView1.Visible = True
+        GridView2.Visible = True
+
+        Dim SQLDT2 As New DataTable
+        Dim MKOD, C As String
+        MKOD = SQLpELATES.Rows(f_sqlDT)("KOD")
+        C = SQLpELATES.Rows(f_sqlDT)("ID").ToString
+        F_cIdPel = C
+        ExecuteSQLQuery("INSERT INTO GNOMATEYSI (KOD,ENERGH,IDPEL,DATEKATAX) VALUES ('" + MKOD + "',1," + C + ",GETDATE() )", SQLDT2)
+        ExecuteSQLQuery("select max(ID) FROM  GNOMATEYSI WHERE KOD='" + MKOD + "'", SQLDT2)
+        Dim NEWID As String = SQLDT2.Rows(0)(0).ToString
+        F_CIdDiagn = NEWID
+        SAVEDIAGN.Enabled = True
+
+        P1.Image = Nothing
+        ToDeleted.Visible = True
+        ToHistory.Visible = True
+        SHOW_GNOMATEYSI(-1)
+
+    End Sub
+
+    Private Sub Button6_Click_1(sender As Object, e As EventArgs) Handles Button6.Click
+        Form2.QUER.Text = "SELECT TOP 20 ONOMA,ID,KOD,TIMH FROM THERTIMES " ' ORDER BY HME "
+        Form2.Show()
+    End Sub
+
+    Private Sub CALC_Click(sender As Object, e As EventArgs) Handles CALC.Click
+        Dim SQLDT2 As New DataTable
+
+        ExecuteSQLQuery("SELECT * FROM THERTIMES", SQLDT2)
+        Dim SUMA As Single = 0
+
+        For n As Integer = 0 To SQLDT2.Rows.Count - 1
+            ' If Me.Controls.Find("txtCod1", True) Then
+            Try
+
+                Dim b As TextBox = Me.Controls.Find(SQLDT2.Rows(n)("KOD"), True)(0)
+                '   MsgBox(b.Text)
+                'End If
+                SUMA = SUMA + Val(b.Text) * SQLDT2.Rows(n)("TIMH")
+
+
+            Catch ex As Exception
+
+            End Try
+
+        Next
+
+        SYNOLKOSTOS.Text = SUMA.ToString
     End Sub
 End Class
 
