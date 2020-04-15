@@ -70,7 +70,6 @@ Partial Class Form1
         Me.PSIH = New System.Windows.Forms.TextBox()
         Me.EIDH = New System.Windows.Forms.TextBox()
         Me.OIKH = New System.Windows.Forms.TextBox()
-        Me.KOSTOSSYNEDRIAS = New System.Windows.Forms.TextBox()
         Me.SYNOLKOSTOS = New System.Windows.Forms.TextBox()
         Me.FYSH = New System.Windows.Forms.TextBox()
         Me.KATHGORIA = New System.Windows.Forms.TextBox()
@@ -86,6 +85,10 @@ Partial Class Form1
         Me.ToHistory = New System.Windows.Forms.Button()
         Me.SAVEDIAGN = New System.Windows.Forms.Button()
         Me.Label30 = New System.Windows.Forms.Label()
+        Me.epipleon = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.KOSTOSSYNEDRIAS = New System.Windows.Forms.TextBox()
+        Me.CALC = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.Label35 = New System.Windows.Forms.Label()
@@ -123,9 +126,6 @@ Partial Class Form1
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.OpenFileDialog2 = New System.Windows.Forms.OpenFileDialog()
         Me.eponymia = New System.Windows.Forms.Label()
-        Me.epipleon = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.CALC = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutGNOMATEYSI.SuspendLayout()
@@ -154,7 +154,7 @@ Partial Class Form1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.69531!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 285.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 286.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.Label1, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Label2, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.kod, 4, 0)
@@ -187,7 +187,7 @@ Partial Class Form1
         Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.Label1.Location = New System.Drawing.Point(225, 0)
+        Me.Label1.Location = New System.Drawing.Point(224, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(146, 20)
         Me.Label1.TabIndex = 0
@@ -199,7 +199,7 @@ Partial Class Form1
         Me.Label2.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Label2.Location = New System.Drawing.Point(3, 25)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(156, 13)
+        Me.Label2.Size = New System.Drawing.Size(155, 13)
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "ΛΗΞΗ ΘΕΡΑΠΕΙΑΣ"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -207,24 +207,24 @@ Partial Class Form1
         'kod
         '
         Me.kod.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.kod.Location = New System.Drawing.Point(529, 15)
+        Me.kod.Location = New System.Drawing.Point(528, 15)
         Me.kod.Name = "kod"
-        Me.kod.Size = New System.Drawing.Size(280, 20)
+        Me.kod.Size = New System.Drawing.Size(281, 20)
         Me.kod.TabIndex = 3
         '
         'EPO
         '
         Me.EPO.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.EPO.Location = New System.Drawing.Point(529, 49)
+        Me.EPO.Location = New System.Drawing.Point(528, 49)
         Me.EPO.Name = "EPO"
-        Me.EPO.Size = New System.Drawing.Size(280, 20)
+        Me.EPO.Size = New System.Drawing.Size(281, 20)
         Me.EPO.TabIndex = 4
         '
         'TextBox1
         '
         Me.TextBox1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(165, 93)
+        Me.TextBox1.Location = New System.Drawing.Point(164, 93)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(266, 22)
         Me.TextBox1.TabIndex = 1
@@ -233,7 +233,7 @@ Partial Class Form1
         '
         Me.Label6.AutoSize = True
         Me.Label6.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Label6.Location = New System.Drawing.Point(165, 59)
+        Me.Label6.Location = New System.Drawing.Point(164, 59)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(266, 13)
         Me.Label6.TabIndex = 9
@@ -245,7 +245,7 @@ Partial Class Form1
         Me.TextBox5.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.TextBox5.Location = New System.Drawing.Point(3, 49)
         Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(156, 20)
+        Me.TextBox5.Size = New System.Drawing.Size(155, 20)
         Me.TextBox5.TabIndex = 10
         Me.TextBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -255,7 +255,7 @@ Partial Class Form1
         Me.NEADIAGNOSI.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
         Me.NEADIAGNOSI.Location = New System.Drawing.Point(3, 121)
         Me.NEADIAGNOSI.Name = "NEADIAGNOSI"
-        Me.NEADIAGNOSI.Size = New System.Drawing.Size(156, 28)
+        Me.NEADIAGNOSI.Size = New System.Drawing.Size(155, 28)
         Me.NEADIAGNOSI.TabIndex = 11
         Me.NEADIAGNOSI.Text = "Νέα Διάγνωση"
         Me.NEADIAGNOSI.UseVisualStyleBackColor = True
@@ -264,7 +264,7 @@ Partial Class Form1
         'EPILOGH
         '
         Me.EPILOGH.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.EPILOGH.Location = New System.Drawing.Point(165, 121)
+        Me.EPILOGH.Location = New System.Drawing.Point(164, 121)
         Me.EPILOGH.Name = "EPILOGH"
         Me.EPILOGH.Size = New System.Drawing.Size(266, 28)
         Me.EPILOGH.TabIndex = 17
@@ -276,7 +276,7 @@ Partial Class Form1
         Me.Label5.AutoSize = True
         Me.TableLayoutPanel1.SetColumnSpan(Me.Label5, 2)
         Me.Label5.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Label5.Location = New System.Drawing.Point(437, 59)
+        Me.Label5.Location = New System.Drawing.Point(436, 59)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(86, 13)
         Me.Label5.TabIndex = 8
@@ -287,7 +287,7 @@ Partial Class Form1
         Me.Label3.AutoSize = True
         Me.TableLayoutPanel1.SetColumnSpan(Me.Label3, 2)
         Me.Label3.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Label3.Location = New System.Drawing.Point(437, 25)
+        Me.Label3.Location = New System.Drawing.Point(436, 25)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(86, 13)
         Me.Label3.TabIndex = 6
@@ -297,9 +297,9 @@ Partial Class Form1
         '
         Me.EGGRAFESN.AutoSize = True
         Me.EGGRAFESN.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.EGGRAFESN.Location = New System.Drawing.Point(529, 139)
+        Me.EGGRAFESN.Location = New System.Drawing.Point(528, 139)
         Me.EGGRAFESN.Name = "EGGRAFESN"
-        Me.EGGRAFESN.Size = New System.Drawing.Size(280, 13)
+        Me.EGGRAFESN.Size = New System.Drawing.Size(281, 13)
         Me.EGGRAFESN.TabIndex = 15
         Me.EGGRAFESN.Text = ".."
         Me.EGGRAFESN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -308,9 +308,9 @@ Partial Class Form1
         '
         Me.isHistory.AutoSize = True
         Me.isHistory.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.isHistory.Location = New System.Drawing.Point(529, 75)
+        Me.isHistory.Location = New System.Drawing.Point(528, 75)
         Me.isHistory.Name = "isHistory"
-        Me.isHistory.Size = New System.Drawing.Size(280, 40)
+        Me.isHistory.Size = New System.Drawing.Size(281, 40)
         Me.isHistory.TabIndex = 11
         Me.isHistory.Text = "Ιστορικό Αρχείο"
         Me.isHistory.UseVisualStyleBackColor = True
@@ -319,7 +319,7 @@ Partial Class Form1
         '
         Me.BNext.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BNext.Enabled = False
-        Me.BNext.Location = New System.Drawing.Point(483, 121)
+        Me.BNext.Location = New System.Drawing.Point(482, 121)
         Me.BNext.Name = "BNext"
         Me.BNext.Size = New System.Drawing.Size(40, 28)
         Me.BNext.TabIndex = 12
@@ -330,7 +330,7 @@ Partial Class Form1
         '
         Me.bPrev.Dock = System.Windows.Forms.DockStyle.Fill
         Me.bPrev.Enabled = False
-        Me.bPrev.Location = New System.Drawing.Point(437, 121)
+        Me.bPrev.Location = New System.Drawing.Point(436, 121)
         Me.bPrev.Name = "bPrev"
         Me.bPrev.Size = New System.Drawing.Size(40, 28)
         Me.bPrev.TabIndex = 18
@@ -350,7 +350,7 @@ Partial Class Form1
         '
         Me.TableLayoutPanel1.SetColumnSpan(Me.next_Istoriko, 2)
         Me.next_Istoriko.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.next_Istoriko.Location = New System.Drawing.Point(437, 90)
+        Me.next_Istoriko.Location = New System.Drawing.Point(436, 90)
         Me.next_Istoriko.Name = "next_Istoriko"
         Me.next_Istoriko.Size = New System.Drawing.Size(86, 25)
         Me.next_Istoriko.TabIndex = 20
@@ -691,13 +691,6 @@ Partial Class Form1
         Me.OIKH.Size = New System.Drawing.Size(206, 20)
         Me.OIKH.TabIndex = 44
         '
-        'KOSTOSSYNEDRIAS
-        '
-        Me.KOSTOSSYNEDRIAS.Location = New System.Drawing.Point(606, 228)
-        Me.KOSTOSSYNEDRIAS.Name = "KOSTOSSYNEDRIAS"
-        Me.KOSTOSSYNEDRIAS.Size = New System.Drawing.Size(199, 20)
-        Me.KOSTOSSYNEDRIAS.TabIndex = 45
-        '
         'SYNOLKOSTOS
         '
         Me.SYNOLKOSTOS.Dock = System.Windows.Forms.DockStyle.Bottom
@@ -837,6 +830,42 @@ Partial Class Form1
         Me.Label30.Size = New System.Drawing.Size(164, 13)
         Me.Label30.TabIndex = 57
         Me.Label30.Text = "ΣΥΝΟΛΙΚΟ ΜΗΝΙΑΙΟ ΚΟΣΤΟΣ"
+        '
+        'epipleon
+        '
+        Me.epipleon.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.epipleon.Location = New System.Drawing.Point(385, 378)
+        Me.epipleon.Name = "epipleon"
+        Me.epipleon.Size = New System.Drawing.Size(215, 19)
+        Me.epipleon.TabIndex = 58
+        Me.epipleon.Text = "Επιπλέον Γνωμάτευση"
+        Me.epipleon.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Button6.Location = New System.Drawing.Point(606, 378)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(199, 19)
+        Me.Button6.TabIndex = 59
+        Me.Button6.Text = "ΤΙΜΕΣ"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'KOSTOSSYNEDRIAS
+        '
+        Me.KOSTOSSYNEDRIAS.Location = New System.Drawing.Point(606, 228)
+        Me.KOSTOSSYNEDRIAS.Name = "KOSTOSSYNEDRIAS"
+        Me.KOSTOSSYNEDRIAS.Size = New System.Drawing.Size(199, 20)
+        Me.KOSTOSSYNEDRIAS.TabIndex = 45
+        '
+        'CALC
+        '
+        Me.CALC.Location = New System.Drawing.Point(173, 403)
+        Me.CALC.Name = "CALC"
+        Me.CALC.Size = New System.Drawing.Size(206, 19)
+        Me.CALC.TabIndex = 60
+        Me.CALC.Text = "ΥΠΟΛΟΓΙΣΜΟΣ"
+        Me.CALC.UseVisualStyleBackColor = True
         '
         'Panel3
         '
@@ -1212,35 +1241,6 @@ Partial Class Form1
         Me.eponymia.Name = "eponymia"
         Me.eponymia.Size = New System.Drawing.Size(0, 20)
         Me.eponymia.TabIndex = 4
-        '
-        'epipleon
-        '
-        Me.epipleon.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.epipleon.Location = New System.Drawing.Point(385, 378)
-        Me.epipleon.Name = "epipleon"
-        Me.epipleon.Size = New System.Drawing.Size(215, 19)
-        Me.epipleon.TabIndex = 58
-        Me.epipleon.Text = "Επιπλέον Γνωμάτευση"
-        Me.epipleon.UseVisualStyleBackColor = True
-        '
-        'Button6
-        '
-        Me.Button6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button6.Location = New System.Drawing.Point(606, 378)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(199, 19)
-        Me.Button6.TabIndex = 59
-        Me.Button6.Text = "ΤΙΜΕΣ"
-        Me.Button6.UseVisualStyleBackColor = True
-        '
-        'CALC
-        '
-        Me.CALC.Location = New System.Drawing.Point(173, 403)
-        Me.CALC.Name = "CALC"
-        Me.CALC.Size = New System.Drawing.Size(206, 19)
-        Me.CALC.TabIndex = 60
-        Me.CALC.Text = "ΥΠΟΛΟΓΙΣΜΟΣ"
-        Me.CALC.UseVisualStyleBackColor = True
         '
         'Form1
         '

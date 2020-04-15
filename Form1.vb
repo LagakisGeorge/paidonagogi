@@ -36,7 +36,7 @@ Public Class Form1
     Public Function checkServer(ByVal check_path As Integer) As Boolean
         Dim c As String
         Dim tmpStr As String
-        c = "Config.ini"
+        c = "C:\MERCVB\DEBUG\Config.ini"
 
 
         Dim par As String = ""
@@ -217,7 +217,9 @@ Public Class Form1
         Dim A As String = Command()
         TextBox1.Text = A
         TextBox1.Select()
-
+        If Len(A) > 0 Then
+            Exit Sub
+        End If
 
 
         Dim sqldt3 As New DataTable
@@ -230,7 +232,10 @@ Public Class Form1
         ExecuteSQLQuery("select T.*,P.ID AS IDPEL from TIM T INNER JOIN PEL P ON P.EIDOS=T.EIDOS AND P.KOD=T.KPE WHERE SKOPOS2 IS NULL", sqldt3)  'WHERE SKOPOS2 IS NULL
         For K As Integer = 0 To sqldt3.Rows.Count - 1
             Dim sqldt30 As New DataTable
-
+            'If sqldt3.Rows(K)("IDPEL") = 249 Or sqldt3.Rows(K)("IDPEL") = 157 Then
+            '    Dim DUM As Integer
+            '    DUM = 0
+            'End If
             'ΑΝ ΥΠΑΡΧΟΥΝ ΠΕΡΙΟΔΟΙ ΣΧΕΤΙΚΑ ΜΕ ΑΥΤΟ ΤΟ ΠΑΡΑΣΤΑΤΙΚΟ ΤΟΤΕ .....
             ExecuteSQLQuery("SELECT * FROM PERIODOI WHERE IDPEL=" + sqldt3.Rows(K)("IDPEL").ToString + " AND '" + Format(sqldt3.Rows(K)("HME"), "MM/dd/yyyy") + "'>=DATEADD(D,-1,EOS) AND '" + Format(sqldt3.Rows(K)("HME"), "MM/dd/yyyy") + "'<=DATEADD(D,27,EOS) ", sqldt30)
             If sqldt30.Rows.Count > 0 Then
