@@ -214,6 +214,15 @@ Public Class Form1
 
         checkServer(0)
 
+        ExecuteSQLQuery("UPDATE THERAP SET LOGCH=0 WHERE LOGCH IS NULL", sqlDT)
+        ExecuteSQLQuery("UPDATE THERAP SET ERGCH=0 WHERE ERGCH IS NULL", sqlDT)
+        ExecuteSQLQuery("UPDATE THERAP SET EIDCH=0 WHERE EIDCH IS NULL", sqlDT)
+        ExecuteSQLQuery("UPDATE THERAP SET OIKCH=0 WHERE OIKCH IS NULL", sqlDT)
+        ExecuteSQLQuery("UPDATE THERAP SET SYMPCH=0 WHERE SYMPCH IS NULL", sqlDT)
+        ExecuteSQLQuery("UPDATE THERAP SET THEA=0 WHERE THEA IS NULL", sqlDT)
+        ExecuteSQLQuery("UPDATE THERAP SET MOYS=0 WHERE MOYS IS NULL", sqlDT)
+
+
         Dim A As String = Command()
         TextBox1.Text = A
         TextBox1.Select()
@@ -683,7 +692,7 @@ Public Class Form1
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Form2.QUER.Text = "SELECT TOP 20 EPO,ID,LOGCH,ERGCH,EIDCH,OIKCH FROM THERAP " ' ORDER BY HME "
+        Form2.QUER.Text = "SELECT TOP 20 EPO,ID,LOGCH,ERGCH,EIDCH,OIKCH,THEA,MOYS FROM THERAP " ' ORDER BY HME "
         Form2.Show()
 
     End Sub
@@ -784,7 +793,8 @@ Public Class Form1
 
         Dim sqlt1 As New DataTable
         ExecuteSQLQuery("select  * from PERIODOI WHERE '" + Chme + "'>=APO AND '" + Chme + "'<=EOS AND IDGN=" + cDGN, sqlt1)
-        If sqlt1.Rows(0)(0) = 0 Then
+        'If sqlt1.Rows(0)(0) = 0 Then
+        If sqlt1.Rows.Count = 0 Then
             MsgBox("ΔΕΝ ΕΧΕΙ ΟΡΙΣΤΕΙ ΠΕΡΙΟΔΟΣ ΣΕ ΑΥΤΟ ΤΟ ΔΙΑΤΗΜΑ")
             Exit Sub
         End If
@@ -881,13 +891,13 @@ Public Class Form1
             GridView2.Columns(STHLHTOY_ID).Visible = False
             GridView2.Columns(1).Width = 60 'HM1
             GridView2.Columns(2).Width = 60 'HM2
-            GridView2.Columns(3).Width = 120
-            GridView2.Columns(4).Width = 120
-            GridView2.Columns(5).Width = 120
-            GridView2.Columns(6).Width = 30
-            GridView2.Columns(7).Width = 30
+            GridView2.Columns(3).Width = 60
+            GridView2.Columns(4).Width = 60
+            GridView2.Columns(5).Width = 60
+            GridView2.Columns(6).Width = 60
+            GridView2.Columns(7).Width = 40
             GridView2.Columns(8).Width = 40
-            GridView2.Columns(9).Width = 50
+            GridView2.Columns(9).Width = 60
 
             '  Dim n As Integer = GridView2.Columns.Count
             '  GridView2.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
@@ -1231,6 +1241,7 @@ Public Class Form1
         End If
 
 
+
     End Sub
 
     Private Sub ToHistory_Click(sender As Object, e As EventArgs) Handles ToHistory.Click
@@ -1340,5 +1351,117 @@ Public Class Form1
 
         SYNOLKOSTOS.Text = SUMA.ToString
     End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        'DHMIOYRGEI MIA PARAGGELIA (ΠΡΕΠΕΙ ΝΑ ΠΑΙΡΝΕΙ ΑΥΤΟΜΑΤΗ ΑΡΙΘΜΗΣΗ) 
+        'ΤΡΑΒΩΝΤΑΣ ΤΟΥΣ ΚΩΔΙΚΟΥΣ ΕΟΠΥ ΣΤΙΣ ΣΕΙΡΕΣ ΤΟΥ ΕΙΔΟΥΣ
+        ' ΚΑΙ ΤΙΣ ΗΜΕΡΟΜΗΝΙΕΣ
+
+        Dim mk As String = GridView2.CurrentRow.Cells(0).Value.ToString
+        Dim SQ As New DataTable
+        'ExecuteSQLQuery("SELECT KOD FROM PEL WHERE ID=" + mk, SQ)
+        Dim MKOD As String = kod.Text
+
+        Dim merg As String = GridView2.CurrentRow.Cells(3).Value.ToString
+        Dim mpsich As String = GridView2.CurrentRow.Cells(4).Value.ToString
+
+
+        Dim mEID As String = GridView2.CurrentRow.Cells(5).Value.ToString
+        Dim mLOG As String = GridView2.CurrentRow.Cells(6).Value.ToString
+
+
+        Dim MAPO As String = GridView2.CurrentRow.Cells(1).Value.ToString
+        Dim MEOS As String = GridView2.CurrentRow.Cells(2).Value.ToString
+
+        ExecuteSQLQuery("SELECT ARITMISI FROM PARASTAT   WHERE EIDOS='a'", SQ)
+        If IsDBNull(SQ.Rows(0)(0)) Then
+            MsgBox("ΒΑΛΤΕ ΑΥΤΟΜΑΤΗ ΑΡΙΘΜΗΣΗ ΣΤΙΣ ΠΑΡΑΓΓΕΛΙΕΣ")
+            Exit Sub
+        End If
+        Dim MMARITMITIRAS As Long = SQ.Rows(0)(0)
+        If MMARITMITIRAS = 0 Then
+            MsgBox("ΒΑΛΤΕ ΑΥΤΟΜΑΤΗ ΑΡΙΘΜΗΣΗ ΣΤΙΣ ΠΑΡΑΓΓΕΛΙΕΣ")
+            Exit Sub
+
+        End If
+
+        ExecuteSQLQuery("UPDATE ARITMISI SET  ARITMISI=ARITMISI+1    WHERE ID=" + Str(MMARITMITIRAS), SQ)
+
+        ' ExecuteSQLQuery("SELECT  ARITMISI FROM  ARITMISI  WHERE ID=" + Str(MMARITMITIRAS), SQ)
+        ' MM = MM + 1
+
+
+
+
+        ExecuteSQLQuery("SELECT A.ARITMISI FROM PARASTAT P INNER JOIN ARITMISI A ON P.ARITMISI=A.ID  WHERE EIDOS='a'", SQ)
+        Dim Matim As String = "a" + Format(SQ.Rows(0)(0), "000000")
+        '02 ΕΡΓΟΘ  03=ΨΥΧΟΘΕΡ
+
+        Dim MHME As String = Format(Now, "MM/dd/yyyy")
+        ExecuteSQLQuery("insert into TIM (KLEIDI,KPE,EIDOS,ATIM,HME) VALUES ('" + Matim + "','" + MKOD + "','e','" + Matim + "','" + MHME + "')", SQ)
+
+        ExecuteSQLQuery("SELECT max(ID_NUM) FROM TIM  ", SQ)
+        Dim m_id_num As String = SQ.Rows(0)(0).ToString
+        ExecuteSQLQuery("UPDATE TIM SET TRP='ΠΙ',AJ1=0,AJ2=0,AJ3=0,AJ4=0,AJ5=0,AJ6=0,AJ7=0,FPA1=0,FPA2=0,FPA3=0,FPA4=0,FPA6=0,FPA7=0,AJI=0 WHERE ID_NUM=" + m_id_num, SQ)
+
+
+
+        If Len(merg) > 0 Then
+            ExecuteSQLQuery("insert into EGGTIM (APOT,PROOD_AJ,ID_NUM,PELKOD,EIDOS,ATIM,KODE,ONOMA,POSO,TIMM,HME) VALUES (1,1," + m_id_num + ",'" + MKOD + "','e','" + Matim + "','02','ΥΠΗΡ.ΕΡΓΟΘΕΡΑΠΕΙΑΣ " + merg + "'," + ERGH.Text + "," + Replace(KOSTOSSYNEDRIAS.Text, ",", ".") + ",'" + MHME + "')", SQ)
+        End If
+        If Len(mpsich) > 0 Then
+            ExecuteSQLQuery("insert into EGGTIM (APOT,PROOD_AJ,ID_NUM,PELKOD,EIDOS,ATIM,KODE,ONOMA,POSO,TIMM,HME) VALUES (1,2," + m_id_num + ",'" + MKOD + "','e','" + Matim + "','03','ΥΠΗΡ.ΨΥΧΟΘΕΡΑΠΕΙΑΣ " + mpsich + "'," + OIKH.Text + "," + Replace(KOSTOSSYNEDRIAS.Text, ",", ".") + ",'" + MHME + "')", SQ)
+        End If
+        If Len(mEID) > 0 Then
+            ExecuteSQLQuery("insert into EGGTIM (APOT,PROOD_AJ,ID_NUM,PELKOD,EIDOS,ATIM,KODE,ONOMA,POSO,TIMM,HME) VALUES (1,2," + m_id_num + ",'" + MKOD + "','e','" + Matim + "','04','ΥΠΗΡ.ΕΙΔΙΚΗΣ ΔΙΑΠΑΙΔΑΓΩΓΗΣΗΣ " + mEID + "'," + EIDH.Text + "," + Replace(KOSTOSSYNEDRIAS.Text, ",", ".") + ",'" + MHME + "')", SQ)
+        End If
+        If Len(mLOG) > 0 Then
+            ExecuteSQLQuery("insert into EGGTIM (APOT,PROOD_AJ,ID_NUM,PELKOD,EIDOS,ATIM,KODE,ONOMA,POSO,TIMM,HME) VALUES (1,2," + m_id_num + ",'" + MKOD + "','e','" + Matim + "','01','ΥΠΗΡ.ΛΟΓΟΘΕΡΑΠΕΙΑΣ " + mLOG + "'," + LOGH.Text + "," + Replace(KOSTOSSYNEDRIAS.Text, ",", ".") + ",'" + MHME + "')", SQ)
+        End If
+
+        ' mEID,mLOG 
+
+
+        ExecuteSQLQuery("insert into EGGTIM (APOT,PROOD_AJ,ID_NUM,PELKOD,EIDOS,ATIM,KODE,ONOMA,POSO,TIMM,HME) VALUES (1,3," + m_id_num + ",'" + MKOD + "','e','" + Matim + "','*','ΔΙΑΣΤΗΜΑ  " + MAPO + "-" + MEOS + "',0,0,'" + MHME + "')", SQ)
+
+
+
+    End Sub
+
+    Private Sub ComboTher_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboTher.SelectedIndexChanged
+        Dim sqldt3 As New DataTable
+        ExecuteSQLQuery("select * FROM THERAP WHERE  ID='" + Split(ComboTher.Text, ";")(1) + "'", sqldt3)
+        If sqldt3.Rows.Count > 0 Then
+            If sqldt3.Rows(0)("LOGCH") = True Then THERAPIA.Items.Add(BRESC("SELECT ONOMA FROM THERTIMES WHERE KOD='LOGH'"))
+            If sqldt3.Rows(0)("ERGCH") = True Then THERAPIA.Items.Add(BRESC("SELECT ONOMA FROM THERTIMES WHERE KOD='ERGH'"))
+            If sqldt3.Rows(0)("EIDCH") = True Then THERAPIA.Items.Add(BRESC("SELECT ONOMA FROM THERTIMES WHERE KOD='EIDH'"))
+            If sqldt3.Rows(0)("OIKCH") = True Then THERAPIA.Items.Add(BRESC("SELECT ONOMA FROM THERTIMES WHERE KOD='OIKH'"))
+            If sqldt3.Rows(0)("MOYS") = True Then THERAPIA.Items.Add(BRESC("SELECT ONOMA FROM THERTIMES WHERE KOD='MOYS'"))
+            If sqldt3.Rows(0)("THEA") = 1 Then THERAPIA.Items.Add(BRESC("SELECT ONOMA FROM THERTIMES WHERE KOD='THEA'"))
+
+        End If
+
+
+
+    End Sub
+
+    Function BRESC(QUERY As String)
+        Dim sqldt3 As New DataTable
+        ExecuteSQLQuery(QUERY, sqldt3)
+        If sqldt3.Rows.Count > 0 Then
+            BRESC = sqldt3.Rows(0)(0).ToString
+        Else
+            BRESC = ""
+        End If
+
+        sqldt3 = Nothing
+
+    End Function
+
+
+
+
+
+
 End Class
 

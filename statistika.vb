@@ -45,9 +45,16 @@ Public Class statistika
         End If
 
 
+        Dim cpel As String = ""
 
-        SQLqry = "SELECT TOP 500 S.ID,CONVERT(CHAR(10),HME,3) AS [ΗΜΕΡ],ORES AS [ΩΡΕΣ],EPO AS [ΘΕΡΑΠ],C1 AS [ΘΕΡΑΠΕΙΑ],DATEKATAX AS [ΗΜΕΡ.ΚΑΤΑΧ] "
-        SQLqry = SQLqry + "  FROM SYNEDRIES S INNER JOIN THERAP T ON S.IDTH=T.ID WHERE " + EN + TH
+        If Len(ComboBox1.Text) > 0 Then
+            cpel = "  IDPEL=" + Split(ComboBox1.Text, ";")(1) + " and "
+
+        End If
+
+
+        SQLqry = "SELECT TOP 500 S.ID,CONVERT(CHAR(10),HME,3) AS [ΗΜΕΡ],ORES AS [ΩΡΕΣ],T.EPO AS [ΘΕΡΑΠ],P.EPO AS [ΜΑΘ],C1 AS [ΘΕΡΑΠΕΙΑ],DATEKATAX AS [ΗΜΕΡ.ΚΑΤΑΧ] "
+        SQLqry = SQLqry + "  FROM SYNEDRIES S INNER JOIN THERAP T ON S.IDTH=T.ID  INNER JOIN PEL P  ON P.ID=S.IDPEL  WHERE " + en + TH + cpel
         SQLqry = SQLqry + "  HME >='" + Format(APO.Value, "MM/dd/yyyy") + "' and HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "' ORDER BY ID DESC "
 
 
@@ -141,13 +148,26 @@ Public Class statistika
         End Try
     End Sub
 
+
+
     Private Sub Statistika_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim sqldt3 As New DataTable
         Form1.ExecuteSQLQuery("select * from THERAP", sqldt3)
         For K As Integer = 0 To sqldt3.Rows.Count - 1
             ComboTher.Items.Add(sqldt3.Rows(K)("EPO") + Space(50) + ";" + Str(sqldt3.Rows(K)("ID").ToString))
         Next
+
+        Dim sqldt4 As New DataTable
+        Form1.ExecuteSQLQuery("select * from PEL WHERE EIDOS='e' ORDER BY EPO", sqldt4)
+        For K As Integer = 0 To sqldt4.Rows.Count - 1
+            ComboBox1.Items.Add(sqldt4.Rows(K)("EPO") + Space(50) + ";" + Str(sqldt4.Rows(K)("ID").ToString))
+        Next
+
+
+
     End Sub
+
+
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         Dim sqldt3 As New DataTable
@@ -215,13 +235,19 @@ Public Class statistika
         End If
 
 
+        Dim cpel As String = ""
+
+        If Len(ComboBox1.Text) > 0 Then
+            cpel = "  IDPEL=" + Split(ComboBox1.Text, ";")(1) + " and "
+
+        End If
 
 
 
 
 
         SQLqry = "SELECT IDTH, sum(ORES) AS [ΩΡΕΣ],EPO AS [ΘΕΡΑΠ] "
-        SQLqry = SQLqry + "  FROM SYNEDRIES S INNER JOIN THERAP T ON S.IDTH=T.ID WHERE " + en + TH + idgn
+        SQLqry = SQLqry + "  FROM SYNEDRIES S INNER JOIN THERAP T ON S.IDTH=T.ID WHERE " + en + TH + idgn + cpel
         SQLqry = SQLqry + "  HME >='" + Format(APO.Value, "MM/dd/yyyy") + "' and HME<='" + Format(EOS.Value, "MM/dd/yyyy") + "' group by EPO,IDTH "
 
 
@@ -261,5 +287,9 @@ Public Class statistika
             ' Close connection
             conn.Close()
         End Try
+    End Sub
+
+    Private Sub TableLayoutPanel1_Paint(sender As Object, e As PaintEventArgs) Handles TableLayoutPanel1.Paint
+
     End Sub
 End Class

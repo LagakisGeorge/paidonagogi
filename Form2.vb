@@ -2,7 +2,22 @@
 Imports System.Data.OleDb
 
 Public Class Form2
-
+    '    CREATE TABLE [dbo].[THERAP](
+    '	[EPO] [nvarchar](20) NULL,
+    '	[ID] [int] IDENTITY(1,1) Not NULL,
+    '	[LOGCH] [bit] NULL,
+    '	[ERGCH] [bit] NULL,
+    '	[EIDCH] [bit] NULL,
+    '	[OIKCH] [bit] NULL,
+    '	[SYMPCH] [bit] NULL,
+    '	[THEA] [bit] NULL,
+    '	[MOYS] [bit] NULL,
+    ' CONSTRAINT [PK_THERAP] PRIMARY KEY CLUSTERED 
+    '(
+    '	[ID] ASC
+    ')WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+    ') ON [PRIMARY]
+    'GO
 
     'Create connection
     Dim conn As OleDbConnection
@@ -35,6 +50,8 @@ Public Class Form2
         ' FillListView(ExecuteSQLQuery(sqlSTR), lstunit, 0)
         paint_ergasies()
     End Sub
+
+
 
 
 
