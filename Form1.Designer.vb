@@ -155,7 +155,7 @@ Partial Class Form1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.69531!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46.0!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 296.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 299.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.Label1, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Label2, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.kod, 4, 0)
@@ -188,7 +188,7 @@ Partial Class Form1
         Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.Label1.Location = New System.Drawing.Point(154, 0)
+        Me.Label1.Location = New System.Drawing.Point(152, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(146, 20)
         Me.Label1.TabIndex = 0
@@ -200,7 +200,7 @@ Partial Class Form1
         Me.Label2.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Label2.Location = New System.Drawing.Point(3, 25)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(117, 13)
+        Me.Label2.Size = New System.Drawing.Size(116, 13)
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "ΛΗΞΗ ΘΕΡΑΠΕΙΑΣ"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -208,35 +208,35 @@ Partial Class Form1
         'kod
         '
         Me.kod.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.kod.Location = New System.Drawing.Point(426, 15)
+        Me.kod.Location = New System.Drawing.Point(423, 15)
         Me.kod.Name = "kod"
-        Me.kod.Size = New System.Drawing.Size(291, 20)
+        Me.kod.Size = New System.Drawing.Size(294, 20)
         Me.kod.TabIndex = 3
         '
         'EPO
         '
         Me.EPO.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.EPO.Location = New System.Drawing.Point(426, 49)
+        Me.EPO.Location = New System.Drawing.Point(423, 49)
         Me.EPO.Name = "EPO"
-        Me.EPO.Size = New System.Drawing.Size(291, 20)
+        Me.EPO.Size = New System.Drawing.Size(294, 20)
         Me.EPO.TabIndex = 4
         '
         'TextBox1
         '
         Me.TextBox1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(126, 93)
+        Me.TextBox1.Location = New System.Drawing.Point(125, 93)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(202, 22)
+        Me.TextBox1.Size = New System.Drawing.Size(200, 22)
         Me.TextBox1.TabIndex = 1
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Label6.Location = New System.Drawing.Point(126, 59)
+        Me.Label6.Location = New System.Drawing.Point(125, 59)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(202, 13)
+        Me.Label6.Size = New System.Drawing.Size(200, 13)
         Me.Label6.TabIndex = 9
         Me.Label6.Text = "ΕΠΩΝΥΜΟ ή ΤΗΛΕΦΩΝΟ"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -246,7 +246,7 @@ Partial Class Form1
         Me.TextBox5.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.TextBox5.Location = New System.Drawing.Point(3, 49)
         Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(117, 20)
+        Me.TextBox5.Size = New System.Drawing.Size(116, 20)
         Me.TextBox5.TabIndex = 10
         Me.TextBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -256,7 +256,7 @@ Partial Class Form1
         Me.NEADIAGNOSI.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
         Me.NEADIAGNOSI.Location = New System.Drawing.Point(3, 121)
         Me.NEADIAGNOSI.Name = "NEADIAGNOSI"
-        Me.NEADIAGNOSI.Size = New System.Drawing.Size(117, 28)
+        Me.NEADIAGNOSI.Size = New System.Drawing.Size(116, 28)
         Me.NEADIAGNOSI.TabIndex = 11
         Me.NEADIAGNOSI.Text = "Νέα Διάγνωση"
         Me.NEADIAGNOSI.UseVisualStyleBackColor = True
@@ -265,9 +265,9 @@ Partial Class Form1
         'EPILOGH
         '
         Me.EPILOGH.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.EPILOGH.Location = New System.Drawing.Point(126, 121)
+        Me.EPILOGH.Location = New System.Drawing.Point(125, 121)
         Me.EPILOGH.Name = "EPILOGH"
-        Me.EPILOGH.Size = New System.Drawing.Size(202, 28)
+        Me.EPILOGH.Size = New System.Drawing.Size(200, 28)
         Me.EPILOGH.TabIndex = 17
         Me.EPILOGH.Text = "Επιλογή Μαθητή"
         Me.EPILOGH.UseVisualStyleBackColor = True
@@ -277,7 +277,7 @@ Partial Class Form1
         Me.Label5.AutoSize = True
         Me.TableLayoutPanel1.SetColumnSpan(Me.Label5, 2)
         Me.Label5.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Label5.Location = New System.Drawing.Point(334, 59)
+        Me.Label5.Location = New System.Drawing.Point(331, 59)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(86, 13)
         Me.Label5.TabIndex = 8
@@ -288,7 +288,7 @@ Partial Class Form1
         Me.Label3.AutoSize = True
         Me.TableLayoutPanel1.SetColumnSpan(Me.Label3, 2)
         Me.Label3.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Label3.Location = New System.Drawing.Point(334, 25)
+        Me.Label3.Location = New System.Drawing.Point(331, 25)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(86, 13)
         Me.Label3.TabIndex = 6
@@ -298,9 +298,9 @@ Partial Class Form1
         '
         Me.EGGRAFESN.AutoSize = True
         Me.EGGRAFESN.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.EGGRAFESN.Location = New System.Drawing.Point(426, 139)
+        Me.EGGRAFESN.Location = New System.Drawing.Point(423, 139)
         Me.EGGRAFESN.Name = "EGGRAFESN"
-        Me.EGGRAFESN.Size = New System.Drawing.Size(291, 13)
+        Me.EGGRAFESN.Size = New System.Drawing.Size(294, 13)
         Me.EGGRAFESN.TabIndex = 15
         Me.EGGRAFESN.Text = ".."
         Me.EGGRAFESN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -309,9 +309,9 @@ Partial Class Form1
         '
         Me.isHistory.AutoSize = True
         Me.isHistory.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.isHistory.Location = New System.Drawing.Point(426, 75)
+        Me.isHistory.Location = New System.Drawing.Point(423, 75)
         Me.isHistory.Name = "isHistory"
-        Me.isHistory.Size = New System.Drawing.Size(291, 40)
+        Me.isHistory.Size = New System.Drawing.Size(294, 40)
         Me.isHistory.TabIndex = 11
         Me.isHistory.Text = "Ιστορικό Αρχείο"
         Me.isHistory.UseVisualStyleBackColor = True
@@ -320,7 +320,7 @@ Partial Class Form1
         '
         Me.BNext.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BNext.Enabled = False
-        Me.BNext.Location = New System.Drawing.Point(380, 121)
+        Me.BNext.Location = New System.Drawing.Point(377, 121)
         Me.BNext.Name = "BNext"
         Me.BNext.Size = New System.Drawing.Size(40, 28)
         Me.BNext.TabIndex = 12
@@ -331,7 +331,7 @@ Partial Class Form1
         '
         Me.bPrev.Dock = System.Windows.Forms.DockStyle.Fill
         Me.bPrev.Enabled = False
-        Me.bPrev.Location = New System.Drawing.Point(334, 121)
+        Me.bPrev.Location = New System.Drawing.Point(331, 121)
         Me.bPrev.Name = "bPrev"
         Me.bPrev.Size = New System.Drawing.Size(40, 28)
         Me.bPrev.TabIndex = 18
@@ -351,7 +351,7 @@ Partial Class Form1
         '
         Me.TableLayoutPanel1.SetColumnSpan(Me.next_Istoriko, 2)
         Me.next_Istoriko.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.next_Istoriko.Location = New System.Drawing.Point(334, 90)
+        Me.next_Istoriko.Location = New System.Drawing.Point(331, 90)
         Me.next_Istoriko.Name = "next_Istoriko"
         Me.next_Istoriko.Size = New System.Drawing.Size(86, 25)
         Me.next_Istoriko.TabIndex = 20

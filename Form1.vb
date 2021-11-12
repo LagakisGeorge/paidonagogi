@@ -794,10 +794,10 @@ Public Class Form1
         Dim sqlt1 As New DataTable
         ExecuteSQLQuery("select  * from PERIODOI WHERE '" + Chme + "'>=APO AND '" + Chme + "'<=EOS AND IDGN=" + cDGN, sqlt1)
         'If sqlt1.Rows(0)(0) = 0 Then
-        If sqlt1.Rows.Count = 0 Then
-            MsgBox("ΔΕΝ ΕΧΕΙ ΟΡΙΣΤΕΙ ΠΕΡΙΟΔΟΣ ΣΕ ΑΥΤΟ ΤΟ ΔΙΑΤΗΜΑ")
-            Exit Sub
-        End If
+        'If sqlt1.Rows.Count = 0 Then
+        '    MsgBox("ΔΕΝ ΕΧΕΙ ΟΡΙΣΤΕΙ ΠΕΡΙΟΔΟΣ ΣΕ ΑΥΤΟ ΤΟ ΔΙΑΤΗΜΑ")
+        '    Exit Sub
+        'End If
         Dim mIDPER As String = sqlt1.Rows(0)("ID").ToString
 
 
@@ -1407,22 +1407,22 @@ Public Class Form1
 
 
         If Len(merg) > 0 Then
-            ExecuteSQLQuery("insert into EGGTIM (APOT,PROOD_AJ,ID_NUM,PELKOD,EIDOS,ATIM,KODE,ONOMA,POSO,TIMM,HME) VALUES (1,1," + m_id_num + ",'" + MKOD + "','e','" + Matim + "','02','ΥΠΗΡ.ΕΡΓΟΘΕΡΑΠΕΙΑΣ " + merg + "'," + ERGH.Text + "," + Replace(KOSTOSSYNEDRIAS.Text, ",", ".") + ",'" + MHME + "')", SQ)
+            ExecuteSQLQuery("insert into EGGTIM (FPA,APOT,PROOD_AJ,ID_NUM,PELKOD,EIDOS,ATIM,KODE,ONOMA,POSO,TIMM,HME) VALUES (5,1,1," + m_id_num + ",'" + MKOD + "','e','" + Matim + "','02','ΥΠΗΡ.ΕΡΓΟΘΕΡΑΠΕΙΑΣ " + merg + "'," + ERGH.Text + "," + Replace(KOSTOSSYNEDRIAS.Text, ",", ".") + ",'" + MHME + "')", SQ)
         End If
         If Len(mpsich) > 0 Then
-            ExecuteSQLQuery("insert into EGGTIM (APOT,PROOD_AJ,ID_NUM,PELKOD,EIDOS,ATIM,KODE,ONOMA,POSO,TIMM,HME) VALUES (1,2," + m_id_num + ",'" + MKOD + "','e','" + Matim + "','03','ΥΠΗΡ.ΨΥΧΟΘΕΡΑΠΕΙΑΣ " + mpsich + "'," + OIKH.Text + "," + Replace(KOSTOSSYNEDRIAS.Text, ",", ".") + ",'" + MHME + "')", SQ)
+            ExecuteSQLQuery("insert into EGGTIM (FPA,APOT,PROOD_AJ,ID_NUM,PELKOD,EIDOS,ATIM,KODE,ONOMA,POSO,TIMM,HME) VALUES (5,1,2," + m_id_num + ",'" + MKOD + "','e','" + Matim + "','03','ΥΠΗΡ.ΨΥΧΟΘΕΡΑΠΕΙΑΣ " + mpsich + "'," + OIKH.Text + "," + Replace(KOSTOSSYNEDRIAS.Text, ",", ".") + ",'" + MHME + "')", SQ)
         End If
         If Len(mEID) > 0 Then
-            ExecuteSQLQuery("insert into EGGTIM (APOT,PROOD_AJ,ID_NUM,PELKOD,EIDOS,ATIM,KODE,ONOMA,POSO,TIMM,HME) VALUES (1,2," + m_id_num + ",'" + MKOD + "','e','" + Matim + "','04','ΥΠΗΡ.ΕΙΔΙΚΗΣ ΔΙΑΠΑΙΔΑΓΩΓΗΣΗΣ " + mEID + "'," + EIDH.Text + "," + Replace(KOSTOSSYNEDRIAS.Text, ",", ".") + ",'" + MHME + "')", SQ)
+            ExecuteSQLQuery("insert into EGGTIM (FPA,APOT,PROOD_AJ,ID_NUM,PELKOD,EIDOS,ATIM,KODE,ONOMA,POSO,TIMM,HME) VALUES (5,1,2," + m_id_num + ",'" + MKOD + "','e','" + Matim + "','04','ΥΠΗΡ.ΕΙΔΙΚΗΣ ΔΙΑΠΑΙΔΑΓΩΓΗΣΗΣ " + mEID + "'," + EIDH.Text + "," + Replace(KOSTOSSYNEDRIAS.Text, ",", ".") + ",'" + MHME + "')", SQ)
         End If
         If Len(mLOG) > 0 Then
-            ExecuteSQLQuery("insert into EGGTIM (APOT,PROOD_AJ,ID_NUM,PELKOD,EIDOS,ATIM,KODE,ONOMA,POSO,TIMM,HME) VALUES (1,2," + m_id_num + ",'" + MKOD + "','e','" + Matim + "','01','ΥΠΗΡ.ΛΟΓΟΘΕΡΑΠΕΙΑΣ " + mLOG + "'," + LOGH.Text + "," + Replace(KOSTOSSYNEDRIAS.Text, ",", ".") + ",'" + MHME + "')", SQ)
+            ExecuteSQLQuery("insert into EGGTIM (FPA,APOT,PROOD_AJ,ID_NUM,PELKOD,EIDOS,ATIM,KODE,ONOMA,POSO,TIMM,HME) VALUES (5,1,2," + m_id_num + ",'" + MKOD + "','e','" + Matim + "','01','ΥΠΗΡ.ΛΟΓΟΘΕΡΑΠΕΙΑΣ " + mLOG + "'," + "0" + "," + Replace(KOSTOSSYNEDRIAS.Text, ",", ".") + ",'" + MHME + "')", SQ)
         End If
 
         ' mEID,mLOG 
 
 
-        ExecuteSQLQuery("insert into EGGTIM (APOT,PROOD_AJ,ID_NUM,PELKOD,EIDOS,ATIM,KODE,ONOMA,POSO,TIMM,HME) VALUES (1,3," + m_id_num + ",'" + MKOD + "','e','" + Matim + "','*','ΔΙΑΣΤΗΜΑ  " + MAPO + "-" + MEOS + "',0,0,'" + MHME + "')", SQ)
+        ExecuteSQLQuery("insert into EGGTIM (FPA,APOT,PROOD_AJ,ID_NUM,PELKOD,EIDOS,ATIM,KODE,ONOMA,POSO,TIMM,HME) VALUES (5,1,3," + m_id_num + ",'" + MKOD + "','e','" + Matim + "','*','ΔΙΑΣΤΗΜΑ  " + MAPO + "-" + MEOS + "',0,0,'" + MHME + "')", SQ)
 
 
 
@@ -1432,12 +1432,14 @@ Public Class Form1
         Dim sqldt3 As New DataTable
         ExecuteSQLQuery("select * FROM THERAP WHERE  ID='" + Split(ComboTher.Text, ";")(1) + "'", sqldt3)
         If sqldt3.Rows.Count > 0 Then
+            THERAPIA.Items.Clear()
+            THERAPIA.Text = ""
             If sqldt3.Rows(0)("LOGCH") = True Then THERAPIA.Items.Add(BRESC("SELECT ONOMA FROM THERTIMES WHERE KOD='LOGH'"))
             If sqldt3.Rows(0)("ERGCH") = True Then THERAPIA.Items.Add(BRESC("SELECT ONOMA FROM THERTIMES WHERE KOD='ERGH'"))
             If sqldt3.Rows(0)("EIDCH") = True Then THERAPIA.Items.Add(BRESC("SELECT ONOMA FROM THERTIMES WHERE KOD='EIDH'"))
             If sqldt3.Rows(0)("OIKCH") = True Then THERAPIA.Items.Add(BRESC("SELECT ONOMA FROM THERTIMES WHERE KOD='OIKH'"))
             If sqldt3.Rows(0)("MOYS") = True Then THERAPIA.Items.Add(BRESC("SELECT ONOMA FROM THERTIMES WHERE KOD='MOYS'"))
-            If sqldt3.Rows(0)("THEA") = 1 Then THERAPIA.Items.Add(BRESC("SELECT ONOMA FROM THERTIMES WHERE KOD='THEA'"))
+            If sqldt3.Rows(0)("THEA") = True Then THERAPIA.Items.Add(BRESC("SELECT ONOMA FROM THERTIMES WHERE KOD='THEA'"))
 
         End If
 
